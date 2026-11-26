@@ -1,0 +1,2149 @@
+game_title: 🛡️ CyberGra v4 — Symulacja Kryzysu Cyberbezpieczeństwa
+game_subtitle: Podejmuj decyzje. Zarządzaj ryzykiem. Chroń organizację.
+metrics:
+- id: plynnosc
+  name: Kondycja Finansowa i Płynność
+  icon: 💰
+  initial: 100
+  color: '#10b981'
+- id: cyber
+  name: Bezpieczeństwo Cybernetyczne
+  icon: 🔒
+  initial: 100
+  color: '#6366f1'
+- id: regulacje
+  name: Zgodność z Regulacjami
+  icon: ⚖️
+  initial: 100
+  color: '#f59e0b'
+- id: reputacja
+  name: Zaufanie Interesantów
+  icon: 🏛️
+  initial: 100
+  color: '#06b6d4'
+initial_stock_price: 120.0
+elimination_stock_drop_pct: 60
+elimination_metric_min: 5
+scenarios:
+- id: S1
+  title: Atak na Sektor Bankowy
+  subtitle: SWIFT • Ransomware • Panic Run • DDoS • UODO • Zero Trust
+  description: 'Wieloetapowy, skoordynowany cyberatak na Bank Północny — jeden z największych banków komercyjnych w Polsce. Atakujący wykorzystują luki w systemie SWIFT, wdrażają ransomware na systemach
+    core bankowych, wywołują panikę depozytariuszy i paraliżują kanały elektroniczne. Finał: kontrola UODO i KNF oraz przebudowa architektury Zero Trust. Gracze (CISO i CEO) poznają pełny cykl zarządzania
+    incydentem sektora finansowego.'
+  icon: 🏦
+  initial_stock_price: 120.0
+  rounds:
+  - id: S1R1
+    title: Kompromitacja Systemu SWIFT
+    narrative: 'Poniedziałek, 06:42. Systemy monitoringu wykrywają anomalię: w ciągu nocy z systemu SWIFT wysłano 14 nieautoryzowanych przelewów na łączną kwotę 47 mln USD do banków w Azji Południowo-Wschodniej.
+      Departament Compliance potwierdza — to nie były zaplanowane transakcje. Trwa wyścig z czasem: część środków może jeszcze zostać zablokowana, jeśli zareagujecie w ciągu najbliższych 2 godzin.
+
+      '
+    broadcast: '⚡ PILNE: Wykryto nieautoryzowane przelewy SWIFT — 47 mln USD. Trwa analiza incydentu.'
+    ciso_question:
+      role: CISO
+      text: Wykryto 14 nieautoryzowanych przelewów SWIFT. Jak reagujesz jako CISO?
+      options:
+      - label: Natychmiastowa izolacja systemu SWIFT i uruchomienie SOC w trybie P1
+        description: Odcinasz SWIFT od sieci korporacyjnej i podnosisz priorytet SOC do P1 (najwyższy). Wszystkie przelewy międzynarodowe stają — tracisz prowizje i czas klientów, ale odcinasz atakującym
+          możliwość kolejnych wyprawek.
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 5
+          reputacja: -3
+        stock_delta: -3.5
+      - label: Analiza forensic bez izolacji — zbieranie dowodów na żywym systemie
+        description: Pozostawiasz system aktywny, żeby śledzić atakującego i zebrać pełne dowody na żywym systemie. Każda godzina obserwacji to jednak kolejne nieautoryzowane transakcje, a regulator później
+          uzna brak izolacji za zaniedbanie.
+        impacts:
+          plynnosc: -15
+          cyber: 5
+          regulacje: -5
+          reputacja: -8
+        stock_delta: -7.0
+      - label: Powiadomienie CERT.PL i NBP, prośba o koordynację międzybankową
+        description: Zgłaszasz incydent do CERT Polska i NBP oraz prosisz banki korespondenckie o blokadę środków. Procedury zajmują czas, ale odzyskujesz część z 47 mln USD i wzmacniasz pozycję wobec regulatora.
+        impacts:
+          plynnosc: -5
+          cyber: 8
+          regulacje: 12
+          reputacja: 2
+        stock_delta: -2.0
+      - label: Cicha blokada podejrzanych transakcji, bez alarmowania zespołu
+        description: Blokujesz podejrzane transakcje ręcznie, bez uruchamiania procedur incydentowych i bez informowania zespołu. Minimalizujesz panikę, ale bez analizy forenzycznej nie znasz skali kompromitacji
+          — a obowiązek zgłoszenia incydentu nadal na Tobie ciąży.
+        impacts:
+          plynnosc: -3
+          cyber: -10
+          regulacje: -15
+          reputacja: 0
+        stock_delta: -1.5
+    ceo_question:
+      role: CEO
+      text: CISO informuje o wycieku 47 mln USD przez SWIFT. Media jeszcze nie wiedzą. Co robisz?
+      options:
+      - label: Zwołaj natychmiastowe posiedzenie zarządu i Rady Nadzorczej
+        description: Zwołujesz zarząd i radę nadzorczą, formalnie uruchamiając łańcuch decyzyjny i dokumentując reakcję. Decyzje podejmowane są wolniej, ale nikt nie zarzuci Ci samodzielnych ruchów wobec
+          regulatora i mediów.
+        impacts:
+          plynnosc: -2
+          cyber: 3
+          regulacje: 10
+          reputacja: 5
+        stock_delta: -1.0
+      - label: Skontaktuj się bezpośrednio z bankami-odbiorcami w celu zablokowania środków
+        description: Osobiście dzwonisz do banków odbiorców w Singapurze i Hongkongu, by zablokować środki, zanim zostaną wypłacone. Działasz operacyjnie poza procedurami — możliwy odzysk części pieniędzy,
+          ale pomijasz formalną ścieżkę nadzoru.
+        impacts:
+          plynnosc: 10
+          cyber: 0
+          regulacje: -3
+          reputacja: 2
+        stock_delta: 2.0
+      - label: Przygotuj proaktywny komunikat prasowy zanim media się dowiedzą
+        description: Publikujesz komunikat, zanim dziennikarze dotrą do tematu — kontrolujesz narrację od pierwszej minuty i spełniasz wymogi zgłoszenia. Krótkoterminowy spadek kursu to cena za wiarygodność
+          długoterminową.
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: 8
+          reputacja: 12
+        stock_delta: -4.0
+      - label: Poczekaj na pełny raport CISO zanim podejmiesz jakiekolwiek działania
+        description: Odraczasz wszelkie decyzje do momentu raportu końcowego CISO. Zyskujesz precyzję, ale tracisz dwugodzinne okno na blokadę środków — i ryzykujesz, że incydent ujawnią media, a nie Ty.
+        impacts:
+          plynnosc: -10
+          cyber: -5
+          regulacje: -8
+          reputacja: -5
+        stock_delta: -5.0
+    learning_points:
+    - 'Dylemat odpowiedzi na incydent: izolacja (bezpieczeństwo) vs. zbieranie dowodów (inteligencja)'
+    - Okno czasowe na blokadę transakcji SWIFT liczy się w godzinach — szybkość reakcji decyduje o stratach
+    - 'Obowiązek zgłoszenia incydentu: CERT i regulator (ustawa o krajowym systemie cyberbezpieczeństwa)'
+  - id: S1R2
+    title: Ransomware na Systemy Core Bankowe
+    narrative: 'Środa, 14:15. Trzy dni po incydencie SWIFT, systemy core bankowe zaczynają się zawieszać. Na ekranach pojawia się komunikat: „Wasze dane zostały zaszyfrowane. Żądamy 200 BTC w ciągu 72h.
+      Tick-tock." Zaszyfrowane zostały bazy transakcyjne, system rachunkowości oraz archiwum kredytowe. Backup sprzed 24h istnieje, ale nie wiadomo, czy nie jest skompromitowany.
+
+      '
+    broadcast: '🔴 ALERT: Ransomware zaatakował systemy core bankowe. Żądanie okupu: 200 BTC. Systemy niedostępne.'
+    ciso_question:
+      role: CISO
+      text: 'Ransomware zaszyfrował systemy core bankowe. Żądanie: 200 BTC w 72h. Twoja decyzja?'
+      options:
+      - label: Uruchom procedurę Disaster Recovery — restore z backupu po weryfikacji integralności
+        description: Izolujesz środowisko, weryfikujesz kopię zapasową w piaskownicy, a następnie przywracasz systemy z backupu (procedura Disaster Recovery). Pełne przywrócenie zajmie 48–72 h — ale nie
+          finansujesz przestępców.
+        impacts:
+          plynnosc: -12
+          cyber: 12
+          regulacje: 5
+          reputacja: -5
+        stock_delta: -6.0
+      - label: Negocjuj z atakującymi przez dedykowany kanał, kup czas
+        description: Zatrudniasz profesjonalnych negocjatorów, żeby opóźnić termin i wydobyć informacje o grupie przestępczej. Nie planujesz płacić, ale sam kontakt z atakującymi to ryzyko prawne i potencjalny
+          wyciek do mediów.
+        impacts:
+          plynnosc: -5
+          cyber: 5
+          regulacje: -8
+          reputacja: -10
+        stock_delta: -4.0
+      - label: Wdróż dekryptor oparty na analizie próbek — próba odzyskania bez backupu
+        description: Laboratorium identyfikuje wariant ransomware i sprawdza publicznie znane dekryptory oraz luki w implementacji szyfrowania. Tania próba, ale bez gwarancji — większość współczesnych rodzin
+          nie ma znanych dekryptorów.
+        impacts:
+          plynnosc: -3
+          cyber: 8
+          regulacje: 0
+          reputacja: -2
+        stock_delta: -2.5
+      - label: Zapłać okup, aby szybko przywrócić operacje
+        description: Płacisz okup, aby szybko wznowić operacje. Nie masz gwarancji otrzymania klucza, finansujesz kolejne ataki, a regulator i banki korespondenckie mogą odmówić współpracy instytucji, która
+          płaci przestępcom.
+        impacts:
+          plynnosc: -25
+          cyber: -20
+          regulacje: -15
+          reputacja: -15
+        stock_delta: -12.0
+    ceo_question:
+      role: CEO
+      text: Bank jest sparaliżowany przez ransomware. Klienci nie mogą korzystać z usług. Co komunikujesz?
+      options:
+      - label: Konferencja prasowa — pełna transparentność o skali problemu
+        description: Występujesz publicznie, opisujesz skalę problemu i plan naprawczy. Otwartość buduje zaufanie klientów i regulatora, choć chwilowo może napędzić panikę.
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: 10
+          reputacja: 10
+        stock_delta: -3.0
+      - label: Komunikat o 'planowanych pracach serwisowych' — kupujesz czas
+        description: Informujesz o „planowanych pracach serwisowych” zamiast o ataku. Kupujesz godziny spokoju, ale przy ransomware prawda prawie zawsze wychodzi na jaw — wtedy tracisz zaufanie i narazasz
+          się na zarzut wprowadzania w błąd.
+        impacts:
+          plynnosc: 0
+          cyber: 0
+          regulacje: -12
+          reputacja: -8
+        stock_delta: 1.0
+      - label: Aktywuj plan ciągłości działania — ręczna obsługa w oddziałach
+        description: 'Uruchamiasz plan ciągłości działania (BCP): oddziały przechodzą na obsługę manualną, bankomaty działają offline. Obsługa jest wolniejsza, ale klienci zachowują dostęp do pieniędzy.'
+        impacts:
+          plynnosc: -8
+          cyber: 3
+          regulacje: 5
+          reputacja: 5
+        stock_delta: -2.0
+    learning_points:
+    - 'Strategie odpowiedzi na ransomware: backup/DR, negocjacje, dekryptory, okup'
+    - 'Konsekwencje płacenia okupu: brak gwarancji, finansowanie przestępczości, reakcja regulatora'
+    - Zasada 3-2-1 backupu i weryfikacja integralności przed odtworzeniem
+  - id: S1R3
+    title: Panic Run — Panika Depozytariuszy
+    narrative: 'Piątek, 09:00. Informacja o cyberataku przedostaje się do mediów. Influencer finansowy z 2M obserwujących publikuje thread: „Wasze pieniądze w Banku Północnym nie są bezpieczne. Wyciągajcie
+      TERAZ." W ciągu 2 godzin kolejki przed oddziałami sięgają 200 osób. Aplikacja mobilna pada pod obciążeniem. NBP dzwoni z pytaniem o płynność banku.
+
+      '
+    broadcast: '📉 KRYZYS: Masowe wypłaty depozytów. Kolejki przed oddziałami. NBP monitoruje sytuację płynnościową.'
+    ciso_question:
+      role: CISO
+      text: Panika bankowa w toku. Systemy pod ekstremalnym obciążeniem. Jak zabezpieczasz infrastrukturę?
+      options:
+      - label: Skaluj infrastrukturę chmurową — priorytet dla kanałów cyfrowych
+        description: Automatycznie skalujesz zasoby w chmurze, dodajesz CDN i load balancery, aby aplikacja mobilna wytrzymała ruch. Kosztuje, ale odciąża oddziały i utrzymuje klientów w kanale cyfrowym.
+        impacts:
+          plynnosc: -10
+          cyber: 8
+          regulacje: 3
+          reputacja: 8
+        stock_delta: -2.0
+      - label: Wprowadź limity transakcji online dla ochrony płynności
+        description: Ograniczasz dzienne limity przelewów i wypłat online. To tarcza dla płynności banku, ale klienci odbiorą to jak karę — i część z nich naprawdę przeniesie depozyty.
+        impacts:
+          plynnosc: 10
+          cyber: 5
+          regulacje: -5
+          reputacja: -12
+        stock_delta: -4.0
+      - label: Aktywuj system anty-fraud do wykrywania fałszywych zleceń w chaosie
+        description: Podnosisz czujność reguł antyfraudowych i monitorujesz nietypowe zlecenia w chaosie paniki. Chroni klientów przed phishingiem i oszustwami, wymaga jednak dostrajania, by nie blokować
+          legalnych operacji.
+        impacts:
+          plynnosc: -3
+          cyber: 12
+          regulacje: 8
+          reputacja: 3
+        stock_delta: -1.0
+    ceo_question:
+      role: CEO
+      text: Panika bankowa — klienci masowo wypłacają depozyty. NBP pyta o Twoją płynność. Działasz.
+      options:
+      - label: Poproś NBP o awaryjną linię płynnościową i komunikuj stabilność
+        description: Zwracasz się do NBP o awaryjną linię płynnościową i komunikujesz stabilność. Silna poduszka finansowa, ale sygnał „bank potrzebuje pomocy” może na rynku zadziałać dokładnie odwrotnie.
+        impacts:
+          plynnosc: 15
+          cyber: 0
+          regulacje: 8
+          reputacja: -5
+        stock_delta: -3.0
+      - label: Nagraj wideo-apel do klientów z osobistą gwarancją bezpieczeństwa
+        description: 'Nagrywasz osobisty apel: „Wasze pieniądze są bezpieczne, odpowiadam osobiście”. Emocjonalny przekaz zatrzymuje część klientów — ale obietnica bez pokrycia w danych wyjdzie bokiem.'
+        impacts:
+          plynnosc: 3
+          cyber: 0
+          regulacje: 0
+          reputacja: 15
+        stock_delta: 3.0
+      - label: Zaoferuj klientom podwyższone oprocentowanie za utrzymanie depozytów
+        description: Oferujesz premię 1,5 p.p. do oprocentowania dla depozytów powyżej 3 miesięcy. Kosztowna obrona bazy depozytowej, skuteczna zwłaszcza wobec racjonalnych klientów.
+        impacts:
+          plynnosc: -8
+          cyber: 0
+          regulacje: 3
+          reputacja: 10
+        stock_delta: 1.0
+      - label: Wprowadź tymczasowy limit wypłat gotówkowych w oddziałach
+        description: Wprowadzasz dzienny limit wypłat gotówki 10 000 PLN. Chronisz rezerwę gotówkową, ale skojarzenia z Grecją 2015 r. mogą wywołać dokładnie to, przed czym chcesz chronić — pełną panikę.
+        impacts:
+          plynnosc: 12
+          cyber: 0
+          regulacje: -10
+          reputacja: -20
+        stock_delta: -8.0
+    learning_points:
+    - Mechanizm panic run i ryzyko systemowe banku (run na depozyty)
+    - NBP jako pożyczkodawca ostatniej instancji — awaryjna linia płynnościowa
+    - 'Komunikacja kryzysowa: autentyczność przywódcy vs. instrumenty finansowe'
+  - id: S1R4
+    title: DDoS na Infrastrukturę Elektroniczną
+    narrative: 'Poniedziałek, 11:30. Gdy sytuacja z panic run wydaje się stabilizować, rozpoczyna się masowy atak DDoS na wszystkie kanały elektroniczne banku: bankowość internetowa, aplikacja mobilna,
+      API partnerskie i nawet wewnętrzny intranet. Ruch sieciowy wzrasta 400x. Atakujący używają botnetu z 500 000 urządzeń IoT. W komunikacie twierdzą, że to dopiero początek.
+
+      '
+    broadcast: '🌐 ATAK DDoS: 400x wzrost ruchu sieciowego. Bankowość elektroniczna i mobilna niedostępna. Botnet IoT.'
+    ciso_question:
+      role: CISO
+      text: Masowy DDoS z botnetu IoT — 500K urządzeń. Wszystkie kanały cyfrowe padły. Twoja strategia?
+      options:
+      - label: Aktywuj usługę anti-DDoS u dostawcy CDN — przerzuć ruch na scrubbing center
+        description: Przekierowujesz ruch przez scrubbing center dostawcy usługi anti-DDoS (zmiana DNS, 30–60 min propagacji). Ruch ataku jest filtrowany, zanim dotrze do Twoich serwerów.
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 3
+          reputacja: 5
+        stock_delta: -2.0
+      - label: Blackhole routing — odetnij cały ruch zagraniczny
+        description: Odcinasz cały ruch z zagranicy na poziomie routingu (blackholing). Natychmiastowa ulga dla infrastruktury, ale klienci i partnerzy zagraniczni tracą dostęp — a botnet może przenieść
+          się na urządzenia w Polsce.
+        impacts:
+          plynnosc: -3
+          cyber: 10
+          regulacje: -5
+          reputacja: -8
+        stock_delta: -3.0
+      - label: Uruchom zapasowe centrum danych z czystym IP range
+        description: Przenosisz usługi na zapasowe centrum danych z nowym, czystym zakresem adresów IP. Botnet musi od nowa namierzyć cel — drogie i czasochłonne, ale bardzo skuteczne.
+        impacts:
+          plynnosc: -12
+          cyber: 12
+          regulacje: 5
+          reputacja: 8
+        stock_delta: -1.0
+      - label: Skoncentruj się na obronie API partnerskich — klienci detaliczni poczekają
+        description: Priorytetujesz API płatności i partnerów (POS, mobilne portfele) kosztem bankowości detalicznej. Utrzymujesz przychody z terminali, ale klienci detaliczni doświadczają niedostępności
+          godzinami.
+        impacts:
+          plynnosc: 5
+          cyber: 5
+          regulacje: -8
+          reputacja: -15
+        stock_delta: -5.0
+    ceo_question:
+      role: CEO
+      text: Bank jest cyfrowo sparaliżowany przez DDoS. Klienci nie mogą płacić kartami ani przelewami. Reakcja?
+      options:
+      - label: Uruchom współpracę z innymi bankami — umowy o wzajemnej obsłudze klientów
+        description: 'Podpisujesz awaryjne porozumienia z innymi bankami: Twoi klienci wypłacają w bankomatach partnerów bez opłat. Solidarność sektorowa utrzymuje obsługę i buduje reputację.'
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 2.0
+      - label: 'Publiczne oświadczenie: ''Jesteśmy ofiarą zorganizowanego ataku państwowego'''
+        description: Oświadczasz publicznie, że bank jest ofiarą zorganizowanego ataku państwowego. Zyskujesz empatię, ale budzisz też pytania o bezpieczeństwo i niepewność geopolityczną.
+        impacts:
+          plynnosc: 0
+          cyber: 3
+          regulacje: -5
+          reputacja: 5
+        stock_delta: -1.0
+      - label: Zażądaj interwencji ABW i Cyber.mil.pl
+        description: Wzywasz ABW i komponenty cyberobrony MON do wsparcia. Służby pomagają przy infrastrukturze krytycznej, ale wchodzisz w tryb postępowania, którego tempem nie sterujesz.
+        impacts:
+          plynnosc: 0
+          cyber: 8
+          regulacje: 10
+          reputacja: 3
+        stock_delta: 0.0
+    learning_points:
+    - 'Taktyki obrony anti-DDoS: scrubbing center, blackholing, zapasowe centrum danych'
+    - 'Kompromis dostępności: całość usług vs. ruch filtrowany/priorytetyzowany'
+    - Solidarność sektorowa (wzajemna obsługa klientów) jako narzędzie zarządzania kryzysem
+  - id: S1R5
+    title: Kontrola UODO i Postępowanie KNF
+    narrative: 'Czwartek. Urząd Ochrony Danych Osobowych rozpoczyna niezapowiedzianą kontrolę. Jednocześnie KNF wszczyna postępowanie wyjaśniające. Okazuje się, że podczas ataku ransomware wycieczono dane
+      180 000 klientów (imiona, numery PESEL, numery rachunków). Media publikują screenshoty danych z dark webu. Prawnicy klientów składają pierwsze pozwy zbiorowe.
+
+      '
+    broadcast: '⚖️ KONTROLA: UODO i KNF wszczęły postępowania. Wyciek danych 180 000 klientów potwierdzony na dark webie.'
+    ciso_question:
+      role: CISO
+      text: UODO jest w budynku, KNF żąda wyjaśnień. Dane 180K klientów wyciekły. Jak współpracujesz?
+      options:
+      - label: Pełna współpraca — udostępnij wszystkie logi, raporty i dowody forensic
+        description: 'Oddajesz regulatorowi pełną dokumentację: logi, raporty i analizę forenzyczną. Maksymalna współpraca to standard oczekiwany przez UODO i KNF — nawet jeśli dokumentacja ujawnia Twoje
+          błędy.'
+        impacts:
+          plynnosc: -3
+          cyber: 5
+          regulacje: 18
+          reputacja: 8
+        stock_delta: -1.0
+      - label: Udostępnij tylko wymagane minimum — zachowaj strategiczne informacje
+        description: Przekazujesz tylko to, co formalnie wymagane. Zachowujesz materiał na procesy cywilne, ale urząd może odczytać to jako opór i sięgnąć po szersze uprawnienia kontroli.
+        impacts:
+          plynnosc: 0
+          cyber: 0
+          regulacje: -10
+          reputacja: -5
+        stock_delta: -2.0
+      - label: Zatrudnij zewnętrzną firmę audytową dla niezależnego raportu
+        description: Zatrudniasz dużą firmę audytorską do niezależnego raportu. Wiarygodność wobec regulatora i sądów — ale audyt może odkryć problemy wykraczające poza ten incydent.
+        impacts:
+          plynnosc: -10
+          cyber: 8
+          regulacje: 12
+          reputacja: 10
+        stock_delta: 1.0
+    ceo_question:
+      role: CEO
+      text: 180 000 klientów zagrożonych — pozwy zbiorowe, kontrola regulatora. Co robisz dla poszkodowanych?
+      options:
+      - label: Program ochrony tożsamości — darmowy monitoring kredytowy dla wszystkich poszkodowanych
+        description: Finansujesz 24-miesięczny monitoring kredytowy, ubezpieczenie od kradzieży tożsamości i dedykowaną infolinię dla poszkodowanych. Kosztowne, ale to standard rynkowy, który najskuteczniej
+          gasi pozwy.
+        impacts:
+          plynnosc: -15
+          cyber: 3
+          regulacje: 10
+          reputacja: 15
+        stock_delta: -2.0
+      - label: Powołaj Rzecznika Poszkodowanych Klientów wewnątrz banku
+        description: 'Tworzysz rolę Rzecznika Poszkodowanych Klientów: jeden punkt kontaktu, koordynacja odszkodowań i raportowanie do zarządu. Tania struktura, która pokazuje, że klient nie jest „numerem
+          sprawy”.'
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: 8
+          reputacja: 12
+        stock_delta: 1.0
+      - label: Skieruj wszystko do działu prawnego — minimalizuj ekspozycję na roszczenia
+        description: Przekazujesz sprawę działowi prawnemu i komunikujesz się wyłącznie pismami. Minimalizujesz ekspozycję prawną, ale lodowaty formalizm obraża klientów i karmi pozwy zbiorowe.
+        impacts:
+          plynnosc: 3
+          cyber: 0
+          regulacje: 5
+          reputacja: -15
+        stock_delta: -4.0
+      - label: Zaoferuj rekompensatę finansową — 500 PLN dla każdego poszkodowanego
+        description: Wypłacasz po 500 PLN każdemu poszkodowanemu — łącznie ok. 90 mln PLN. Bezkompromisowe i medialnie mocne, ale tworzy oczekiwania na rekompensaty przy każdym kolejnym incydencie.
+        impacts:
+          plynnosc: -20
+          cyber: 0
+          regulacje: 5
+          reputacja: 10
+        stock_delta: -5.0
+    learning_points:
+    - 'RODO w praktyce: 72 h na zgłoszenie naruszenia do UODO, prawa osób, których dane dotyczą'
+    - 'Strategie wobec regulatora: pełna współpraca vs. minimum prawne vs. niezależny audyt'
+    - Standardy rekompensat po wyciekach danych bankowych (monitoring, ubezpieczenie, odszkodowania)
+  - id: S1R6
+    title: Wdrożenie Architektury Zero Trust
+    narrative: 'Miesiąc po kryzysie. Zarząd zatwierdził budżet 85 mln PLN na przebudowę architektury bezpieczeństwa. Masz mandat na wdrożenie Zero Trust Architecture. Pytanie brzmi: jak szybko i jak głęboko
+      transformujesz organizację? Każdy dzień bez zmian to dzień ekspozycji na kolejny atak.
+
+      '
+    broadcast: '🔄 TRANSFORMACJA: Zarząd zatwierdził 85 mln PLN na Zero Trust Architecture. Rozpoczyna się odbudowa.'
+    ciso_question:
+      role: CISO
+      text: Masz 85 mln PLN i mandat zarządu. Jak wdrażasz Zero Trust?
+      options:
+      - label: Pełna transformacja — microsegmentacja, IAM, SASE, EDR w 12 miesięcy
+        description: 'Realizujesz kompletną architekturę Zero Trust w 12 miesięcy: mikrosegmentację, IAM/MFA, SASE i EDR na stacjach. Najwyższy poziom dojrzałości bezpieczeństwa — za cenę ogromnego kosztu
+          i ryzyka projektu.'
+        impacts:
+          plynnosc: -15
+          cyber: 20
+          regulacje: 10
+          reputacja: 10
+        stock_delta: 5.0
+      - label: Podejście fazowe — najpierw krytyczne systemy, potem reszta w 24 miesiące
+        description: Najpierw zabezpieczasz SWIFT, core banking i dane klientów, pozostałe systemy w drugiej fazie. Mniejsze ryzyko wdrożenia, ale 24 miesiące oznaczają rok dalszej ekspozycji na atak.
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 8
+          reputacja: 8
+        stock_delta: 3.0
+      - label: Ludzie przede wszystkim — szkolenia, Red Team i Security Champions w każdym dziale
+        description: 'Inwestujesz w kulturę: szkolenia, wewnętrzny Red Team i Security Champions w każdym dziale. Najtańsza warstwa obrony — ludzie — ale efekt buduje się latami i nie zastąpi technologii.'
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 4.0
+      - label: Outsourcing bezpieczeństwa do MSSP — skup się na działalności podstawowej
+        description: Zlecasz bezpieczeństwo dostawcy MSSP (Managed Security Service Provider). Szybko zyskujesz monitoring 24/7, ale oddajesz kontrolę nad danymi, a kompetencje nie rosną w Twojej organizacji.
+        impacts:
+          plynnosc: -3
+          cyber: 8
+          regulacje: -5
+          reputacja: 3
+        stock_delta: 1.0
+    ceo_question:
+      role: CEO
+      text: Post-kryzys. Jak pozycjonujesz bank po przejściu przez atak? Strategia na przyszłość.
+      options:
+      - label: Kampania 'Bank Odporny' — przekuj kryzys w przewagę marketingową
+        description: 'Odbudowujesz wizerunek kampanią „Bank Odporny”: lekcje z kryzysu jako dowód dojrzałości. Skuteczne PR-owo, ale krytycy zarzucą Ci czerpanie zysków z własnego incydentu.'
+        impacts:
+          plynnosc: -5
+          cyber: 3
+          regulacje: 3
+          reputacja: 18
+        stock_delta: 6.0
+      - label: Powołaj Cyber Defense Innovation Lab — zostań liderem cyberbezpieczeństwa w sektorze
+        description: Tworzysz laboratorium badawcze cyberobrony we współpracy z uczelniami i startupami. Pozycja lidera sektora i przyciąganie talentów — ale zwrot z inwestycji dopiero za lata.
+        impacts:
+          plynnosc: -12
+          cyber: 15
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 4.0
+      - label: Dywersyfikacja — przejęcie fintechowego startupu z silnym cyberbezpieczeństwem
+        description: Kupujesz fintech z dojrzałym bezpieczeństwem, by wchłonąć jego kompetencje. Zyskujesz technologię natychmiast, ale integracja organizacji tuż po kryzysie to ryzyko drugiego incydentu.
+        impacts:
+          plynnosc: -18
+          cyber: 12
+          regulacje: 0
+          reputacja: 8
+        stock_delta: 3.0
+    learning_points:
+    - 'Architektura Zero Trust: mikrosegmentacja, IAM/MFA, SASE, EDR'
+    - Transformacja big-bang vs. fazowa — ryzyko projektu vs. ryzyko przedłużającej się ekspozycji
+    - 'Trzy filary bezpieczeństwa: ludzie, procesy, technologia'
+- id: S2
+  title: Cyberatak na Sektor Energetyczny
+  subtitle: SCADA/ICS • Blackout • Rynek Energii • Wyciek • URE • Resilience
+  description: 'Zmasowany atak państwowy (APT) na krajową infrastrukturę energetyczną. Atakujący przejmują kontrolę nad systemami SCADA/ICS, wywołują blackout trzech województw, manipulują rynkiem energii
+    i doprowadzają do postępowania URE. Gracze poznają specyfikę bezpieczeństwa OT: rozdział IT/OT, sterowanie manualne, procedurę black start oraz wymogi NIS2 dla infrastruktury krytycznej.'
+  icon: ⚡
+  initial_stock_price: 120.0
+  rounds:
+  - id: S2R1
+    title: Infiltracja Systemów SCADA/ICS
+    narrative: 'Wykryto nieautoryzowany dostęp do systemów SCADA w trzech elektrowniach. Atakujący mają potencjalną kontrolę nad turbinami, transformatorami i systemami dystrybucji. Wstępna analiza wskazuje
+      na APT powiązany z obcym państwem.
+
+      '
+    broadcast: '⚡ ALERT: Nieautoryzowany dostęp do systemów SCADA w trzech elektrowniach. APT powiązany z obcym państwem.'
+    ciso_question:
+      role: CISO
+      text: APT w systemach SCADA trzech elektrowni. Masz potencjalne backdoory w OT. Jak reagujesz?
+      options:
+      - label: Natychmiastowa izolacja OT od IT — air-gap wszystkich systemów przemysłowych
+        description: Fizycznie odcinasz sieć OT (systemy przemysłowe) od sieci biurowej IT, zamykając atakującym drogę do sterowania turbinami. Bezpiecznie, ale operatorzy tracą zdalny monitoring i telemetrię.
+        impacts:
+          plynnosc: -10
+          cyber: 18
+          regulacje: 8
+          reputacja: 2
+        stock_delta: -4.0
+      - label: Wdrożenie honeypotów w sieci OT — monitoruj atakującego i zbieraj dane wywiadowcze
+        description: Rozstawiasz pułapki (honeypoty) w sieci OT, by obserwować poczynania APT i zbierać dane wywiadowcze. Uczysz się o przeciwniku — ale każda godzina obserwacji to ryzyko utraty wpływu
+          na fizyczną infrastrukturę.
+        impacts:
+          plynnosc: -3
+          cyber: 10
+          regulacje: -5
+          reputacja: -3
+        stock_delta: -2.0
+      - label: Aktywuj protokół awaryjny — przełącz elektrownie na sterowanie manualne
+        description: Przełączasz elektrownie na sterowanie ręczne — operatorzy przejmują procesy lokalnie. Wolniejsze i wymagające personelu, ale cyberatak traci wpływ na fizykę sieci.
+        impacts:
+          plynnosc: -8
+          cyber: 12
+          regulacje: 5
+          reputacja: 5
+        stock_delta: -3.0
+    ceo_question:
+      role: CEO
+      text: Cyberatak na infrastrukturę krytyczną. RCB i ABW czekają na Twój ruch. Strategia?
+      options:
+      - label: Pełna współpraca ze służbami — udostępnij infrastrukturę dla kontroperacji
+        description: Udostępniasz infrastrukturę i dane służbom (RCB, ABW) do wspólnej kontroperacji. Tracisz kontrolę nad tempem działań, ale zyskujesz zasoby państwa i przychylność regulatora.
+        impacts:
+          plynnosc: -5
+          cyber: 10
+          regulacje: 15
+          reputacja: 8
+        stock_delta: -1.0
+      - label: Zarządzaj kryzysem wewnętrznie — informuj służby minimum
+        description: Informujesz służby tylko o tym, co absolutnie konieczne, i próbujesz uporać się samodzielnie. Zachowujesz autonomię, ale wobec ataku państwowego na infrastrukturę krytyczną to niedoszacowanie
+          zagrożenia.
+        impacts:
+          plynnosc: 0
+          cyber: -5
+          regulacje: -12
+          reputacja: -8
+        stock_delta: -5.0
+      - label: Eskaluj na poziom NATO — artykuł 5 w cyberprzestrzeni
+        description: 'Wnosisz o uznanie ataku za podstawę wspólnej obrony w ramach NATO — od 2014 r. sojusz uznał, że cyberatak może wywołać artykuł 5. Bezprecedensowa eskalacja: wsparcie sojuszu kosztem
+          politycznego wyjścia poza poziom firmy.'
+        impacts:
+          plynnosc: -3
+          cyber: 8
+          regulacje: 10
+          reputacja: 5
+        stock_delta: 0.0
+    learning_points:
+    - Konwergencja IT/OT i specyfika zabezpieczania systemów SCADA/ICS
+    - Sterowanie manualne jako plan awaryjny infrastruktury krytycznej (fallback)
+    - Ataki państwowe (APT) — kiedy eskalować do służb i sojuszników
+  - id: S2R2
+    title: Blackout Regionalny
+    narrative: 'Atakujący aktywowali payload. Trzy województwa tracą zasilanie. 6 milionów ludzi bez prądu. Szpitale przechodzą na generatory awaryjne. Transport publiczny sparaliżowany.
+
+      '
+    broadcast: '🔴 BLACKOUT: Trzy województwa bez prądu. 6 mln ludzi dotkniętych. Szpitale na generatorach awaryjnych.'
+    ciso_question:
+      role: CISO
+      text: Blackout — atakujący kontrolują systemy dystrybucji. Jak odzyskujesz kontrolę?
+      options:
+      - label: Black start procedure — restart sieci energetycznej od elektrowni szczytowych
+        description: 'Uruchamiasz procedurę black start: sieć odbudowywana jest sekwencyjnie, od elektrowni szczytowych przez korytarze przesyłowe. Sprawdzony standard branżowy — ale pełne przywrócenie
+          potrwa 12–24 h.'
+        impacts:
+          plynnosc: -12
+          cyber: 10
+          regulacje: 8
+          reputacja: 5
+        stock_delta: -5.0
+      - label: Jednoczesny restart wszystkich stacji — ryzyko, ale szybkość
+        description: Próbujesz uruchomić wszystkie stacje jednocześnie. Jeśli się uda — pełna moc w 2 h; jeśli nie, ryzykujesz kaskadową awarią i tygodniami bez zasilania.
+        impacts:
+          plynnosc: -5
+          cyber: 5
+          regulacje: -8
+          reputacja: 10
+        stock_delta: -2.0
+      - label: Priorytet dla infrastruktury krytycznej — szpitale, wodociągi, telekomunikacja
+        description: Priorytetowo odbudowujesz zasilanie szpitali, wodociągów i telekomunikacji, dopiero potem obszary mieszkalne. Odpowiedzialne społecznie — ale mieszkańcy czekają dłużej i to oni płacą
+          cenę polityczną.
+        impacts:
+          plynnosc: -8
+          cyber: 8
+          regulacje: 12
+          reputacja: 8
+        stock_delta: -3.0
+    ceo_question:
+      role: CEO
+      text: 6 milionów ludzi bez prądu. Media porównują sytuację do wojny. Twoja komunikacja?
+      options:
+      - label: Konferencja prasowa co 2 godziny — pełna transparentność o postępach
+        description: Występujesz na konferencji co 2 godziny z konkretnymi postępami i harmonogramem przywracania. Regularna, prawdziwa informacja to najskuteczniejsze lekarstwo na panikę.
+        impacts:
+          plynnosc: -3
+          cyber: 0
+          regulacje: 8
+          reputacja: 15
+        stock_delta: 2.0
+      - label: Powołaj sztab kryzysowy z udziałem wojska i PSP
+        description: Tworzysz sztab kryzysowy z wojskiem i Państwową Strażą Pożarną dla logistyki i komunikacji. Sygnał, że państwo trzyma sytuację — ale obecność wojska w mediach budzi też skojarzenia
+          wojenne.
+        impacts:
+          plynnosc: -5
+          cyber: 3
+          regulacje: 10
+          reputacja: 10
+        stock_delta: 0.0
+      - label: Obwiniaj dostawcę systemów SCADA — to ich wina
+        description: Publicznie wskazujesz dostawcę systemów SCADA jako winnego. Chwilowa ulga, ale utrata twarzy u partnerów, kontrargumenty prawne — i pytania o Twoje własne audyty przedwdrożeniowe.
+        impacts:
+          plynnosc: 3
+          cyber: -5
+          regulacje: -10
+          reputacja: -12
+        stock_delta: -6.0
+    learning_points:
+    - Procedura black start — sekwencyjna odbudowa sieci energetycznej
+    - 'Priorytetyzacja odbiorców: szpitale, wodociągi, telekomunikacja'
+    - Komunikacja kryzysowa w incydentach o skali krajowej (regularne, prawdziwe aktualizacje)
+  - id: S2R3
+    title: Manipulacja Rynkiem Energii
+    narrative: 'W czasie chaosu blackoutu, zidentyfikowano podejrzane transakcje na Towarowej Giełdzie Energii. Ktoś grał na spadek cen przed atakiem i teraz zarabia miliony na kontraktach terminowych.
+      Podejrzenie insider tradingu powiązanego z atakującymi.
+
+      '
+    broadcast: '📊 GIEŁDA: Podejrzane transakcje na TGE. Insider trading powiązany z cyberatakiem? URE bada sprawę.'
+    ciso_question:
+      role: CISO
+      text: Podejrzane transakcje na giełdzie energii powiązane z atakiem. Jak współpracujesz ze śledztwem?
+      options:
+      - label: Pełna analiza logów — korelacja czasowa ataków z transakcjami giełdowymi
+        description: 'Twój SOC buduje oś czasu: korelujesz logi ataku z transakcjami na Towarowej Giełdzie Energii. Twarde dane dla śledztwa i regulatora, wymaga jednak analityków, których brakuje w trakcie
+          żywego incydentu.'
+        impacts:
+          plynnosc: -5
+          cyber: 10
+          regulacje: 12
+          reputacja: 3
+        stock_delta: 1.0
+      - label: Uruchom wewnętrzne dochodzenie — sprawdź, czy ktoś z firmy był zamieszany
+        description: Sprawdzasz dostępy, pocztę i telefony pracowników — czy ktoś z wnętrza informował atakujących. Bolesne dla kultury organizacji, ale wyklucza (albo potwierdza) udział insidera.
+        impacts:
+          plynnosc: -8
+          cyber: 8
+          regulacje: 10
+          reputacja: 5
+        stock_delta: -2.0
+      - label: Skup się na obronie — dochodzenie to sprawa organów ścigania
+        description: Ograniczasz się do obrony, a śledztwo zostawiasz prokuraturze i KNF. Nie marnujesz zasobów, ale jako właściciel logów masz wobec organów obowiązek ich udostępnienia.
+        impacts:
+          plynnosc: 0
+          cyber: 5
+          regulacje: -5
+          reputacja: -3
+        stock_delta: -1.0
+    ceo_question:
+      role: CEO
+      text: Podejrzenie insider tradingu w powiązaniu z cyberatakiem. Jak reagujesz wobec rynku?
+      options:
+      - label: Publiczne oświadczenie o współpracy z organami ścigania i audycie wewnętrznym
+        description: Komunikujesz pełną współpracę z organami ścigania oraz wewnętrzny audyt. Transparentność chroni notowania i relacje z giełdą.
+        impacts:
+          plynnosc: -3
+          cyber: 0
+          regulacje: 10
+          reputacja: 10
+        stock_delta: 2.0
+      - label: Zatrudnij niezależnego audytora giełdowego — Deloitte lub PwC
+        description: Zatrudniasz zewnętrznego audytora giełdowego dla wiarygodności niezależnej oceny. Drogo, ale raport uchroni Cię przed domysłami mediów.
+        impacts:
+          plynnosc: -10
+          cyber: 3
+          regulacje: 12
+          reputacja: 8
+        stock_delta: 0.0
+      - label: Milcz i czekaj na wyniki śledztwa — nie komentuj publicznie
+        description: Nie komentujesz niczego do końca śledztwa. Formalnie bezpieczne — ale pustkę narracyjną natychmiast wypełnią spekulacje o Twoim udziale.
+        impacts:
+          plynnosc: 0
+          cyber: 0
+          regulacje: -8
+          reputacja: -10
+        stock_delta: -4.0
+    learning_points:
+    - Cyberatak jako wektor manipulacji rynkiem (insider trading)
+    - Analiza korelacyjna logów jako narzędzie śledcze
+    - Odpowiedzialność prawna za podejrzane transakcje giełdowe
+  - id: S2R4
+    title: Wyciek Danych Klientów Energetycznych
+    narrative: 'Podczas analizy post-breach odkryto, że atakujący wyeksportowali bazę danych klientów — 2.3 miliona rekordów z adresami, zużyciem energii i danymi płatności. Dane pojawiają się na forach
+      darkweb.
+
+      '
+    broadcast: '🔓 WYCIEK: 2.3 mln rekordów klientów na darkwebie. Adresy, dane płatności, wzorce zużycia energii.'
+    ciso_question:
+      role: CISO
+      text: 2.3 mln rekordów klientów wyciekło. Dane na darkwebie. Twoja reakcja techniczna?
+      options:
+      - label: Aktywuj procedurę breach notification — 72h na zgłoszenie do UODO
+        description: Uruchamiasz procedurę zgłoszenia naruszenia ochrony danych — masz 72 h na powiadomienie UODO — oraz monitorowanie wycieków (DLP). Formalnie czysto, ale publicznie przyznajesz skalę
+          wycieku.
+        impacts:
+          plynnosc: -5
+          cyber: 8
+          regulacje: 15
+          reputacja: 5
+        stock_delta: -2.0
+      - label: Monitoring darkwebu — próbuj zlokalizować i zablokować sprzedaż danych
+        description: Zatrudniasz firmę threat intelligence do namierzenia i zakłócenia sprzedaży danych na darkwebie. Wycieku nie cofniesz, ale utrudnisz handel i zbierzesz dane o jego źródle.
+        impacts:
+          plynnosc: -8
+          cyber: 12
+          regulacje: 5
+          reputacja: 8
+        stock_delta: -1.0
+      - label: Wymuś reset haseł i rotację kluczy API dla wszystkich klientów
+        description: Wymuszasz reset haseł i rotację kluczy API u wszystkich klientów. Bezpieczne, ale masowa niedostępność usług uderza w tych samych klientów, których chcesz chronić.
+        impacts:
+          plynnosc: -3
+          cyber: 10
+          regulacje: 8
+          reputacja: -5
+        stock_delta: -3.0
+    ceo_question:
+      role: CEO
+      text: Wyciek danych 2.3 mln klientów. Jak komunikujesz i kompensujesz?
+      options:
+      - label: Indywidualne powiadomienie każdego klienta + pakiet ochrony tożsamości
+        description: Wysyłasz indywidualne powiadomienia z pakietem ochrony tożsamości i 12-miesięcznym monitoringiem kredytowym. Drogo i logistycznie trudne — ale etyczny standard i najlepsza ochrona przed
+          pozwami.
+        impacts:
+          plynnosc: -15
+          cyber: 3
+          regulacje: 10
+          reputacja: 15
+        stock_delta: -2.0
+      - label: Ogólny komunikat na stronie + infolinia dla zaniepokojonych
+        description: Publikujesz ogólny komunikat na stronie i uruchamiasz infolinię. Spełniasz minimum prawne, ale klienci odczytają to jako lekceważenie.
+        impacts:
+          plynnosc: -3
+          cyber: 0
+          regulacje: 5
+          reputacja: -8
+        stock_delta: -4.0
+      - label: Zaoferuj darmową energię przez 3 miesiące dla poszkodowanych
+        description: Proponujesz darmową energię przez 3 miesiące dla poszkodowanych. Bardzo kosztowne, ale symboliczna i bezsporna rekompensata.
+        impacts:
+          plynnosc: -20
+          cyber: 0
+          regulacje: 5
+          reputacja: 18
+        stock_delta: -1.0
+    learning_points:
+    - Obowiązek zgłoszenia naruszenia RODO (72 h) także w sektorze energetycznym
+    - Darkweb i ekonomia skradzionych danych
+    - Rekompensaty ponad minimum prawne — etyka vs. koszt
+  - id: S2R5
+    title: Presja Regulatora URE
+    narrative: 'Urząd Regulacji Energetyki wszczyna formalne postępowanie. Grozi kara do 15% rocznego przychodu. Jednocześnie Komisja Europejska pyta o zgodność z dyrektywą NIS2.
+
+      '
+    broadcast: '⚖️ URE: Postępowanie formalne. Kara do 15% przychodu. KE pyta o zgodność z NIS2.'
+    ciso_question:
+      role: CISO
+      text: URE i Komisja Europejska badają sprawę. Jak wykazujesz compliance?
+      options:
+      - label: Prezentacja pełnego planu naprawczego z harmonogramem i budżetem
+        description: Prezentujesz regulatorowi konkretny plan naprawczy z harmonogramem i budżetem. Profesjonalizm, który realnie obniża kary — ale publicznie zobowiązujesz się do terminów.
+        impacts:
+          plynnosc: -8
+          cyber: 10
+          regulacje: 15
+          reputacja: 10
+        stock_delta: 2.0
+      - label: Zatrudnij lobbystów — negocjuj zmniejszenie kary
+        description: Zatrudniasz lobbystów do negocjacji wysokości kary. Może zadziałać finansowo — ale jeśli wyjdzie na jaw, regulator i media potraktują Cię bezwzględnie.
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: 5
+          reputacja: -10
+        stock_delta: -1.0
+      - label: Proaktywnie wdróż NIS2 przed terminem — pokaż dobrą wolę
+        description: Wdrażasz wymogi NIS2 przed unijnym terminem. Demonstrujesz dobrą wolę wobec URE i Komisji Europejskiej; kosztowne, ale zamienia karę w inwestycję.
+        impacts:
+          plynnosc: -12
+          cyber: 15
+          regulacje: 14
+          reputacja: 8
+        stock_delta: 3.0
+    ceo_question:
+      role: CEO
+      text: Kara do 15% przychodu. Jak zarządzasz finansowymi konsekwencjami kryzysu?
+      options:
+      - label: Negocjuj z URE — zobowiąż się do inwestycji zamiast kary
+        description: 'Negocjujesz: zamiast kary zobowiązujesz się do inwestycji dwukrotności jej wysokości w bezpieczeństwo. Klasyczny układ „inwestycja zamiast kary” — dobra wola wobec regulatora.'
+        impacts:
+          plynnosc: -10
+          cyber: 10
+          regulacje: 12
+          reputacja: 8
+        stock_delta: 2.0
+      - label: Utworzenie funduszu kompensacyjnego dla poszkodowanych
+        description: Tworzysz fundusz kompensacyjny dla poszkodowanych. Odpowiedzialność wykraczająca poza wymóg prawny buduje kapitał zaufania.
+        impacts:
+          plynnosc: -15
+          cyber: 0
+          regulacje: 10
+          reputacja: 15
+        stock_delta: 1.0
+      - label: Zaskarż decyzję regulatora — walcz prawnie
+        description: Odwołujesz się od decyzji regulatora do sądu. Może obniżyć karę, ale to wojna z URE na lata i sygnał konfrontacji dla całego rynku.
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: -15
+          reputacja: -12
+        stock_delta: -5.0
+    learning_points:
+    - Dyrektywa NIS2 dla podmiotów kluczowych — obowiązki i kary
+    - 'Negocjacja z regulatorem: inwestycja zamiast kary'
+    - Proaktywny compliance jako strategia redukcji kar
+  - id: S2R6
+    title: Odbudowa i Cyber Resilience
+    narrative: 'Trzy miesiące po kryzysie. Czas na strategiczną odbudowę. Zarząd oczekuje planu, który zapewni, że to się nigdy nie powtórzy. Masz budżet i mandat — jak przebudujesz bezpieczeństwo OT?
+
+      '
+    broadcast: '🔄 ODBUDOWA: Zarząd zatwierdził strategiczny plan cyber resilience. Nowa era bezpieczeństwa OT.'
+    ciso_question:
+      role: CISO
+      text: Czas na strategiczną odbudowę bezpieczeństwa OT. Twój plan na przyszłość?
+      options:
+      - label: Digital twin infrastruktury — symulacja ataków na wirtualnym bliźniaku
+        description: Budujesz cyfrowego bliźniaka sieci — wirtualną kopię infrastruktury do symulowania ataków i testowania zmian. Droga inwestycja, ale kończy eksperymenty na żywej sieci energetycznej.
+        impacts:
+          plynnosc: -15
+          cyber: 18
+          regulacje: 8
+          reputacja: 10
+        stock_delta: 5.0
+      - label: SOC dla OT — dedykowane Security Operations Center dla systemów przemysłowych
+        description: 'Tworzysz dedykowany SOC dla OT: analitycy specjalizujący się w SCADA/ICS, monitoring 24/7. Zamyka lukę kompetencyjną między światami IT i OT.'
+        impacts:
+          plynnosc: -12
+          cyber: 15
+          regulacje: 10
+          reputacja: 8
+        stock_delta: 4.0
+      - label: Partnerstwo z wojskiem — joint cyber defense dla infrastruktury krytycznej
+        description: 'Formalizujesz program wspólnej obrony z wojskiem: wspólne ćwiczenia i wymiana danych wywiadowczych. Silna pozycja wobec ataków państwowych — kosztem zależności od struktur wojskowych.'
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 12
+          reputacja: 12
+        stock_delta: 3.0
+    ceo_question:
+      role: CEO
+      text: Post-kryzys energetyczny. Jak pozycjonujesz firmę na przyszłość?
+      options:
+      - label: Lider transformacji energetycznej — OZE + cyber = przewaga konkurencyjna
+        description: 'Łączysz odbudowę cyber z transformacją energetyczną: nowoczesna, zielona i bezpieczna firma. Silna narracja inwestorska i polityczna.'
+        impacts:
+          plynnosc: -10
+          cyber: 8
+          regulacje: 8
+          reputacja: 18
+        stock_delta: 6.0
+      - label: Hub innowacji OT Security — centrum kompetencji dla całego sektora
+        description: 'Tworzysz centrum kompetencji OT Security dla całego sektora: szkolenia i doradztwo. Prestiż i wpływy — ale konkurencja też skorzysta z Twojej wiedzy.'
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 10
+          reputacja: 12
+        stock_delta: 4.0
+      - label: Konsolidacja — przejęcie mniejszych dostawców dla kontroli łańcucha
+        description: Przejmujesz mniejszych dostawców energii dla kontroli nad łańcuchem. Skala i kontrola, ale ogromne zobowiązania kapitałowe tuż po kryzysie.
+        impacts:
+          plynnosc: -18
+          cyber: 5
+          regulacje: 3
+          reputacja: 8
+        stock_delta: 2.0
+    learning_points:
+    - Cyber resilience jako element strategii biznesowej, nie tylko koszt
+    - Digital twin i dedykowany SOC dla OT — narzędzia dojrzałości
+    - Partnerstwo publiczno-wojskowe w obronie infrastruktury krytycznej
+- id: S3
+  title: Wojna Informacyjna i Dezinformacja
+  subtitle: Deepfake • Zaufanie Publiczne • Social Media • Źródła Info • Kontratak • Odporność
+  description: 'Skoordynowana kampania dezinformacyjna wymierzona w organizację: deepfake CEO, fałszywe wycieki, armia 50 000 botów i przejęte konto prasowe. Walka o prawdę w erze post-truth. Gracze uczą
+    się detekcji deepfake, budowania kontrnarracji, współpracy z platformami i wznoszenia odporności informacyjnej — na styku technologii, psychologii i prawa.'
+  icon: 📡
+  initial_stock_price: 120.0
+  rounds:
+  - id: S3R1
+    title: Kampania Deepfake
+    narrative: 'W sieci pojawia się deepfake wideo CEO Twojej organizacji, w którym „ogłasza" masowe zwolnienia i zamknięcie oddziałów. Wideo ma 2 miliony wyświetleń w 4 godziny. Media pytają o komentarz.
+
+      '
+    broadcast: '🎭 DEEPFAKE: Fałszywe wideo CEO z 2M wyświetleń. Treść: masowe zwolnienia. Media żądają komentarza.'
+    ciso_question:
+      role: CISO
+      text: Deepfake CEO w sieci. 2 miliony wyświetleń. Jak identyfikujesz i zwalczasz technicznie?
+      options:
+      - label: Analiza forensic wideo + DMCA takedown na wszystkich platformach
+        description: Analitycy identyfikują artefakty manipulacji w wideo, a prawnicy masowo zgłaszają naruszenie praw autorskich (takedown) na każdej platformie. Usunięcie trwa 2–6 h — do tego czasu materiał
+          dalej się rozprzestrzenia.
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 8
+          reputacja: 8
+        stock_delta: -2.0
+      - label: Deployment systemu weryfikacji tożsamości cyfrowej (digital watermark)
+        description: Wdrażasz system znakowania i podpisu cyfrowego oficjalnych nagrań. Ten deepfake się nie cofnie, ale budujesz infrastrukturę weryfikacji autentyczności na przyszłość.
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 5
+          reputacja: 5
+        stock_delta: -3.0
+      - label: Uruchom kontrnarrację — realne wideo CEO prostujące fałsz
+        description: Prawdziwy CEO natychmiast nagrywa dementi i publikuje je na tych samych kanałach, na których szerzy się fałszywka. Szybka kontrnarracja dociera do ludzi skuteczniej niż oficjalny komunikat.
+        impacts:
+          plynnosc: -3
+          cyber: 5
+          regulacje: 3
+          reputacja: 15
+        stock_delta: 2.0
+    ceo_question:
+      role: CEO
+      text: Twój deepfake w sieci. Pracownicy dzwonią z pytaniami. Inwestorzy nerwowi. Reakcja?
+      options:
+      - label: Natychmiastowy live stream — pokażesz się osobiście i zdementujesz
+        description: Wchodzisz na żywo w mediach społecznościowych i osobiście zdementujesz fałszywkę. Autentyczność — nie perfekcja — jest najskuteczniejszą bronią przeciwko deepfake'owi.
+        impacts:
+          plynnosc: -2
+          cyber: 0
+          regulacje: 3
+          reputacja: 18
+        stock_delta: 3.0
+      - label: Pozew cywilny i zgłoszenie do prokuratury
+        description: Składasz pozew cywilny i zgłoszenie do prokuratury. Długofalowo buduje to precedens prawny, ale w obronie bieżącego wizerunku jest po prostu za wolne.
+        impacts:
+          plynnosc: -5
+          cyber: 3
+          regulacje: 10
+          reputacja: 8
+        stock_delta: 0.0
+      - label: Zatrudnij agencję PR kryzysowego — profesjonalna kampania kontrnarracyjna
+        description: Profesjonalna agencja PR kryzysowego przejmuje kampanię kontrnarracyjną. Systematyczne i skuteczne — ale drogie, i oddajesz kontrolę nad głosem firmy na zewnątrz.
+        impacts:
+          plynnosc: -10
+          cyber: 0
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 1.0
+    learning_points:
+    - Deepfake — technologia, detekcja i prawne narzędzia (takedown)
+    - Autentyczność lidera jako najskuteczniejsza kontrnarracja
+    - 'Infrastruktura weryfikacji treści: podpis cyfrowy, znakowanie pochodzenia'
+  - id: S3R2
+    title: Atak na Zaufanie Publiczne
+    narrative: 'Kampania się intensyfikuje. Fałszywe „wycieki" dokumentów sugerują korupcję w zarządzie. Boty amplifikują narrację. Sondaż: 40% społeczeństwa „nie wierzy" w oficjalne komunikaty organizacji.
+
+      '
+    broadcast: '📉 ZAUFANIE: 40% społeczeństwa nie wierzy oficjalnym komunikatom. Fałszywe ''wycieki'' o korupcji.'
+    ciso_question:
+      role: CISO
+      text: Armie botów i fałszywe wycieki. Jak bronisz infrastrukturę informacyjną?
+      options:
+      - label: Wdrożenie systemu detekcji botów i fake accounts
+        description: Wdrażasz system detekcji botów i fałszywych kont, raportujesz sieci platformom i współpracujesz z CERT. Technicznie poprawne, ale walka z botami to wyścig zbrojeń bez końca.
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 5
+          reputacja: 8
+        stock_delta: -1.0
+      - label: Zabezpiecz wewnętrzne kanały komunikacji — zero leaked docs
+        description: Szyfrujesz kanały wewnętrzne, wdrażasz DLP i monitoring eksfiltracji — żaden prawdziwy dokument nie wycieknie. Utrudnia to codzienną pracę i nie cofnie już opublikowanych fałszywek.
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 8
+          reputacja: 3
+        stock_delta: -2.0
+      - label: Publiczna weryfikacja autentyczności każdego 'wycieku'
+        description: 'Publicznie weryfikujesz każdy rzekomy „wyciek”: pokazujesz oryginały i miejsca manipulacji. Transparentność kontra dezinformacja — czasochłonne, ale uczy odbiorców samodzielnej oceny.'
+        impacts:
+          plynnosc: -3
+          cyber: 5
+          regulacje: 3
+          reputacja: 12
+        stock_delta: 1.0
+    ceo_question:
+      role: CEO
+      text: 40% społeczeństwa nie wierzy Twoim komunikatom. Jak odbudowujesz zaufanie?
+      options:
+      - label: Niezależny audyt — zaproś dziennikarzy śledczych do weryfikacji
+        description: Zapraszasz dziennikarzy śledczych do pełnej weryfikacji dokumentów. Jeśli jesteś czysty — najmocniejszy możliwy dowód; jeśli nie — sam sobie podpisujesz wyrok.
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: 8
+          reputacja: 18
+        stock_delta: 3.0
+      - label: 'Kampania #FakeAlert — edukacja o dezinformacji we współpracy z mediami'
+        description: Kampania edukacyjna o dezinformacji we współpracy z mediami i fact-checkerami. Odbudowuje krytyczne myślenie odbiorców, ale efekty budują się powoli.
+        impacts:
+          plynnosc: -8
+          cyber: 3
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 1.0
+      - label: Ignoruj szum — skup się na wynikach finansowych i operacyjnych
+        description: Ignorujesz narrację i liczysz na wyniki finansowe. W erze mediów społecznościowych cisza bywa odczytana jako przyznanie się do winy.
+        impacts:
+          plynnosc: 3
+          cyber: 0
+          regulacje: -5
+          reputacja: -10
+        stock_delta: -4.0
+    learning_points:
+    - Boty i koordynowane nieautentyczne zachowanie (coordinated inauthentic behavior)
+    - Odporność informacyjna społeczeństwa — model WHO infodemic
+    - Strategia ciszy vs. transparentność w wojnie informacyjnej
+  - id: S3R3
+    title: Manipulacja Mediami Społecznościowymi
+    narrative: 'Zidentyfikowano sieć 50 000 fałszywych kont koordynujących ataki na Twoje profile w mediach społecznościowych. Hashtag #VegaSkandal jest trending. Pracownicy otrzymują groźby.
+
+      '
+    broadcast: '🤖 BOTY: 50 000 fałszywych kont koordynuje ataki. Trending hashtag skandalowy. Groźby wobec pracowników.'
+    ciso_question:
+      role: CISO
+      text: Sieć 50K botów atakuje. Pracownicy dostają groźby online. Ochrona cyfrowa?
+      options:
+      - label: Takedown koordynowany z platformami — raportuj entire network
+        description: Raportujesz całą sieć 50 000 botów platformom (Meta, X, LinkedIn) jako koordynowane nieautentyczne zachowanie. Skoordynowany takedown działa — o ile platformy zareagują szybko.
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 4
+          reputacja: 6
+        stock_delta: 0.0
+      - label: Ochrona tożsamości cyfrowej pracowników — training + monitoring
+        description: Szkolisz pracowników z higieny cyfrowej, monitorujesz ich profile, zapewniasz wsparcie psychologiczne. Chroni ludzi — ale nie usuwa źródła ataku.
+        impacts:
+          plynnosc: -8
+          cyber: 10
+          regulacje: 5
+          reputacja: 8
+        stock_delta: -1.0
+      - label: Kontra-kampania botowa — walcz ogniem z ogniem
+        description: Odpowiadasz własną armią botów. Krótkoterminowo może działać, ale używasz narzędzia, które sam zwalczasz — regulacje i media mogą zniszczyć Cię tym samym argumentem.
+        impacts:
+          plynnosc: -5
+          cyber: 5
+          regulacje: -15
+          reputacja: -8
+        stock_delta: -3.0
+    ceo_question:
+      role: CEO
+      text: Trending hashtag skandalowy. Groźby wobec pracowników. Jak chronisz ludzi i firmę?
+      options:
+      - label: Oświadczenie o zero tolerancji + współpraca z policją ws. gróźb
+        description: Publiczne zero tolerancji dla gróźb i zgłoszenie sprawy policji. Stanowczość chroni pracowników i komunikuje wartości firmy.
+        impacts:
+          plynnosc: -3
+          cyber: 3
+          regulacje: 10
+          reputacja: 12
+        stock_delta: 2.0
+      - label: Program wsparcia psychologicznego dla pracowników
+        description: Hotline, sesje z psychologiem i elastyczny czas pracy dla zastraszonych pracowników. „Ludzie przed wynikami” — mocny sygnał wewnętrzny i zewnętrzny.
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: 5
+          reputacja: 10
+        stock_delta: 0.0
+      - label: Zamknij oficjalne kanały social media do odwołania
+        description: Zamykasz oficjalne profile do odwołania. Ucinasz wektor ataku, ale tracisz głos w dyskusji, która toczy się bez Ciebie — wygląda jak ucieczka.
+        impacts:
+          plynnosc: 0
+          cyber: 5
+          regulacje: -5
+          reputacja: -12
+        stock_delta: -5.0
+    learning_points:
+    - Ochrona pracowników jako obszar bezpieczeństwa (duty of care)
+    - Odpowiedzialność platform za sieci botów
+    - Etyczne granice kontrataków informacyjnych
+  - id: S3R4
+    title: Kompromitacja Źródeł Informacji
+    narrative: 'Atakujący przejęli oficjalne konto prasowe organizacji i przez 20 minut publikowali fałszywe komunikaty. Zanim to wykryto, 3 agencje informacyjne przedrukowały fałszywe wiadomości.
+
+      '
+    broadcast: '⚠️ PRZEJĘTE KONTO: Oficjalne konto prasowe zhakowane na 20 min. 3 agencje przedrukowały fałsz.'
+    ciso_question:
+      role: CISO
+      text: Przejęte konto prasowe — fałszywe komunikaty w mediach. Jak zabezpieczasz kanały?
+      options:
+      - label: MFA na wszystkich kontach + hardware security keys dla komunikacji
+        description: Wymuszasz MFA odporne na phishing i klucze sprzętowe (np. YubiKey) na wszystkich kontach medialnych i PR. Przejęcie konta staje się praktycznie niemożliwe.
+        impacts:
+          plynnosc: -5
+          cyber: 18
+          regulacje: 8
+          reputacja: 5
+        stock_delta: 0.0
+      - label: System podpisu cyfrowego dla komunikatów prasowych (PGP/blockchain)
+        description: Każdy oficjalny komunikat dostaje weryfikowalny podpis cyfrowy, który media mogą sprawdzić przed publikacją. Buduje kanał autentyczności — ale wymaga edukacji odbiorców.
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 5
+          reputacja: 10
+        stock_delta: 1.0
+      - label: Przenieś komunikację na własną platformę — blog.firma.pl z certyfikatem
+        description: Jedynym źródłem prawdy staje się Twoja strona z certyfikatem; social media tylko odsyłają do niej. Przejmujesz kontrolę nad infrastrukturą własnej informacji.
+        impacts:
+          plynnosc: -3
+          cyber: 10
+          regulacje: 5
+          reputacja: 3
+        stock_delta: -1.0
+    ceo_question:
+      role: CEO
+      text: Media przedrukowały fałszywe komunikaty z Twojego konta. Jak naprawiasz narrację?
+      options:
+      - label: Bezpośredni kontakt z redaktorami naczelnymi — wyjaśnij i poproś o sprostowanie
+        description: Osobiste telefony do redaktorów naczelnych z prośbą o sprostowanie. Relacje i szacunek do rzemiosła dziennikarskiego działają szybciej niż jakakolwiek nota prasowa.
+        impacts:
+          plynnosc: -2
+          cyber: 0
+          regulacje: 5
+          reputacja: 15
+        stock_delta: 3.0
+      - label: Konferencja prasowa z demonstracją jak powstał deepfake/hack
+        description: Konferencja prasowa z pokazem, jak powstał deepfake i jak wykryć manipulację. Edukacja publiczna zamienia kryzys w pozycję eksperta.
+        impacts:
+          plynnosc: -5
+          cyber: 5
+          regulacje: 3
+          reputacja: 12
+        stock_delta: 2.0
+      - label: Pozew przeciwko mediom, które nie zweryfikowały źródła
+        description: Pozwy przeciwko mediom, które nie zweryfikowały źródła. Ustala precedens odpowiedzialności — ale to też wojna z mediami na lata.
+        impacts:
+          plynnosc: -8
+          cyber: 0
+          regulacje: 8
+          reputacja: -5
+        stock_delta: -2.0
+    learning_points:
+    - MFA odporne na phishing i klucze sprzętowe dla kont publicznych
+    - Kanały weryfikacji komunikatów — pojedyncze źródło prawdy
+    - Zarządzanie relacjami z mediami w kryzysie
+  - id: S3R5
+    title: Kontratak Informacyjny
+    narrative: 'Twój zespół zidentyfikował źródło kampanii dezinformacyjnej. Masz dowody wskazujące na state-sponsored operation. Pytanie: jak wykorzystujesz tę wiedzę strategicznie?
+
+      '
+    broadcast: '🎯 IDENTYFIKACJA: Źródło kampanii dezinformacyjnej zidentyfikowane. State-sponsored operation potwierdzona.'
+    ciso_question:
+      role: CISO
+      text: Masz dowody na state-sponsored dezinformację. Jak wykorzystujesz intelligence?
+      options:
+      - label: Podziel się IOC z sektorem — ISAC briefing dla innych organizacji
+        description: 'Organizujesz briefing dla sektora w ramach ISAC: wymiana wskaźników kompromisacji (IOC) i taktyk atakującego. Wspólna obrona całej branży zamiast samotnych walk.'
+        impacts:
+          plynnosc: -3
+          cyber: 15
+          regulacje: 10
+          reputacja: 12
+        stock_delta: 2.0
+      - label: Współpracuj ze służbami — przekaż dowody ABW
+        description: Przekazujesz materiał dowodowy ABW — formalna eskalacja do poziomu bezpieczeństwa narodowego. Zyskujesz państwowe śledztwo, tracisz kontrolę nad tempem i widocznością sprawy.
+        impacts:
+          plynnosc: -2
+          cyber: 10
+          regulacje: 12
+          reputacja: 8
+        stock_delta: 1.0
+      - label: Public attribution — ujawnij publicznie kto stoi za atakiem
+        description: Publicznie wskazujesz sponsora ataku (public attribution). Komunikacyjnie potężne — ale narażasz źródła wywiadowcze i prowokujesz eskalację przeciwnika.
+        impacts:
+          plynnosc: 0
+          cyber: 8
+          regulacje: -5
+          reputacja: 15
+        stock_delta: 3.0
+    ceo_question:
+      role: CEO
+      text: Masz dowody na operację obcego państwa. Strategiczna decyzja o ujawnieniu?
+      options:
+      - label: Koordynuj ujawnienie z rządem — wspólna konferencja MSZ + firma
+        description: 'Ujawnienie koordynowane z MSZ: wspólna konferencja rządu i firmy. Firma występuje jako partner państwa, nie jako samotny aktor na arenie międzynarodowej.'
+        impacts:
+          plynnosc: -3
+          cyber: 3
+          regulacje: 10
+          reputacja: 12
+        stock_delta: 3.0
+      - label: Cicho przekaż służbom — nie angażuj się politycznie
+        description: Materiał do służb, publicznie zero polityki. Bezpieczne, ale rezygnujesz z kapitału reputacyjnego, który daje ujawnienie.
+        impacts:
+          plynnosc: 0
+          cyber: 5
+          regulacje: 8
+          reputacja: 3
+        stock_delta: 0.0
+      - label: Użyj jako leverage w negocjacjach biznesowych
+        description: Traktujesz dowody jako kartę przetargową w negocjacjach biznesowych. Pragmatyczne — ale jeśli wyjdzie na jaw, to reputacyjny strzał w stopę.
+        impacts:
+          plynnosc: 5
+          cyber: -5
+          regulacje: -12
+          reputacja: -10
+        stock_delta: -3.0
+    learning_points:
+    - Atrybucja ataków — wymiar techniczny, prawny i polityczny
+    - Wymiana informacji między organizacjami (ISAC)
+    - 'Decyzja o publicznym ujawnieniu sponsora ataku: korzyści i ryzyka'
+  - id: S3R6
+    title: Budowanie Odporności Społecznej
+    narrative: 'Kryzys minął. Czas na systemowe wzmocnienie odporności organizacji i społeczeństwa na dezinformację. Masz budżet i doświadczenie — co budujesz na przyszłość?
+
+      '
+    broadcast: '🔄 RESILIENCE: Czas budować odporność na dezinformację. Lekcje wyniesione z kryzysu.'
+    ciso_question:
+      role: CISO
+      text: Post-kryzys dezinformacyjny. Jaką architekturę obrony informacyjnej budujesz?
+      options:
+      - label: AI-powered Media Monitoring — automatyczna detekcja deepfake i dezinformacji
+        description: Wdrażasz monitoring mediów z AI do detekcji deepfake'ów i koordynowanych kampanii. Wczesne wykrywanie zamiast gaszenia pożarów po fakcie.
+        impacts:
+          plynnosc: -12
+          cyber: 18
+          regulacje: 5
+          reputacja: 10
+        stock_delta: 4.0
+      - label: Cyber Fusion Center — integracja cyber + info ops + PR
+        description: Tworzysz Cyber Fusion Center łączący cyber, analizę informacji i PR w jednym zespole. Łamie silosy między bezpieczeństwem a komunikacją.
+        impacts:
+          plynnosc: -10
+          cyber: 15
+          regulacje: 8
+          reputacja: 12
+        stock_delta: 3.0
+      - label: Program ambasadorów prawdy — sieć wiarygodnych głosów w mediach
+        description: Budujesz sieć wiarygodnych ambasadorów — ekspertów i pracowników gotowych demaskować fałszywki. Odporność społeczna zamiast centralnej cenzury.
+        impacts:
+          plynnosc: -5
+          cyber: 5
+          regulacje: 3
+          reputacja: 15
+        stock_delta: 2.0
+    ceo_question:
+      role: CEO
+      text: Lekcje z wojny informacyjnej. Jak pozycjonujesz organizację na przyszłość?
+      options:
+      - label: Fundacja na rzecz Cyfrowej Odporności Społecznej
+        description: Tworzysz fundację edukującą społeczeństwo o dezinformacji. Długofalowa inwestycja w otoczenie, z którego organizacja czerpie zaufanie.
+        impacts:
+          plynnosc: -10
+          cyber: 5
+          regulacje: 8
+          reputacja: 18
+        stock_delta: 5.0
+      - label: Centrum Excelence ds. Dezinformacji — komercyjne doradztwo dla innych firm
+        description: Centrum doskonałości oferujące doradztwo w przeciwdziałaniu dezinformacji innym firmom. Przekuwasz doświadczenie kryzysowe w nowy biznes.
+        impacts:
+          plynnosc: -5
+          cyber: 10
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 4.0
+      - label: Lobbing za regulacjami — ustawa o przeciwdziałaniu dezinformacji
+        description: Lobbing za ustawą o przeciwdziałaniu dezinformacji. Rozwiązanie systemowe — ale proces legislacyjny trwa latami i budzi kontrowersje wolnościowe.
+        impacts:
+          plynnosc: -3
+          cyber: 3
+          regulacje: 15
+          reputacja: 8
+        stock_delta: 2.0
+    learning_points:
+    - 'Architektura obrony informacyjnej: monitoring AI, fusion center'
+    - Odporność społeczna jako element bezpieczeństwa narodowego
+    - Regulacje przeciwdziałające dezinformacji — szanse i kontrowersje
+- id: S4
+  title: Atak na Łańcuch Dostaw (Supply Chain)
+  subtitle: Kompromitacja Dostawcy • Backdoor • Eskalacja • Containment • Audyt • Nowa Architektura
+  description: 'Zaawansowany atak na łańcuch dostaw oprogramowania: atakujący kompromitują zaufanego dostawcę ERP i wstrzykują backdoor w rutynową aktualizację, trafiającą do 2000 organizacji (kontekst:
+    SolarWinds, MOVEit). Gracze przechodzą pełny cykl: wykrycie, containment, kaskada na klientów, remediation, audyt 340 dostawców i przebudowa architektury supply chain security.'
+  icon: 🔗
+  initial_stock_price: 120.0
+  rounds:
+  - id: S4R1
+    title: Kompromitacja Dostawcy Oprogramowania
+    narrative: 'Zaufany dostawca systemu ERP, z którego korzysta Twoja organizacja i 2000 innych firm, został zhakowany. Ostatnia aktualizacja (zainstalowana automatycznie 3 dni temu) zawiera ukryty backdoor.
+      Dowiedziałeś się z raportu CERT, nie od dostawcy.
+
+      '
+    broadcast: '🔗 SUPPLY CHAIN: Dostawca ERP skompromitowany. Backdoor w aktualizacji u 2000 firm. CERT potwierdza.'
+    ciso_question:
+      role: CISO
+      text: Backdoor w aktualizacji ERP. 3 dni aktywności. Jak reagujesz?
+      options:
+      - label: Natychmiastowy rollback aktualizacji + pełna analiza forensic
+        description: 'Cofasz aktualizację, izolujesz serwer ERP i skanujesz środowisko w poszukiwaniu śladów atakującego. Pewne — ale operacje na ERP stają: faktury, magazyn, kadry.'
+        impacts:
+          plynnosc: -12
+          cyber: 15
+          regulacje: 8
+          reputacja: 5
+        stock_delta: -4.0
+      - label: Network segmentation — izoluj ERP, ale nie wyłączaj
+        description: 'Segmentujesz sieć: ERP odcięte od systemów krytycznych, ale działa w trybie ograniczonym. Kompromis między dostępnością usług a zawieraniem zagrożenia.'
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 5
+          reputacja: 3
+        stock_delta: -2.0
+      - label: Threat hunting — szukaj lateral movement w sieci
+        description: Zespół threat hunting szuka śladów ruchu poprzecznego (lateral movement) z zainfekowanego ERP. Zakładasz, że backdoor już kogoś zaprosił głębiej — i aktywnie to weryfikujesz.
+        impacts:
+          plynnosc: -3
+          cyber: 18
+          regulacje: 3
+          reputacja: 0
+        stock_delta: -1.0
+    ceo_question:
+      role: CEO
+      text: Dostawca ERP zhakowany. 2000 firm dotkniętych, w tym Twoja. Strategia korporacyjna?
+      options:
+      - label: Zażądaj pełnego audytu bezpieczeństwa dostawcy — zero trust supply chain
+        description: Żądasz pełnego dostępu do raportów bezpieczeństwa dostawcy i audytu jego praktyk. Twarda gra — dostawca może odmówić, ale 2000 poszkodowanych firm to realny argument.
+        impacts:
+          plynnosc: -5
+          cyber: 8
+          regulacje: 10
+          reputacja: 10
+        stock_delta: 0.0
+      - label: Powołaj konsorcjum poszkodowanych firm — siła w liczbach
+        description: Tworzysz konsorcjum poszkodowanych klientów dostawcy. Wspólna siła negocjacyjna, prawna i medialna wobec dostawcy, który zawodzi wszystkich naraz.
+        impacts:
+          plynnosc: -3
+          cyber: 5
+          regulacje: 8
+          reputacja: 12
+        stock_delta: 1.0
+      - label: Natychmiast rozpocznij migrację na alternatywnego dostawcę ERP
+        description: Rozpoczynasz migrację ERP do alternatywnego dostawcy. Eliminujesz ryzyko u źródła — ale 6–12 miesięcy projektu w środku kryzysu to samo w sobie nowe ryzyko.
+        impacts:
+          plynnosc: -18
+          cyber: 10
+          regulacje: 3
+          reputacja: 5
+        stock_delta: -5.0
+    learning_points:
+    - 'Ataki supply chain — zaufanie jako wektor (kontekst: SolarWinds, MOVEit)'
+    - 'Odpowiedź na incydent: rollback vs. segmentacja vs. threat hunting'
+    - Odpowiedzialność dostawcy wobec tysięcy poszkodowanych klientów
+  - id: S4R2
+    title: Analiza Backdoora i Zasięgu Kompromitacji
+    narrative: 'Analiza forensic ujawnia, że backdoor umożliwiał atakującym pełen dostęp do bazy ERP — dane finansowe, HR, łańcuch dostaw. Przez 3 dni mogli czytać, kopiować i modyfikować dane. Nie wiadomo,
+      co dokładnie zabrali.
+
+      '
+    broadcast: '🔍 FORENSIC: Backdoor dawał pełny dostęp do bazy ERP przez 3 dni. Zakres exfiltracji nieznany.'
+    ciso_question:
+      role: CISO
+      text: Pełny dostęp do ERP przez 3 dni. Nie wiesz, co wykradziono. Priorytet?
+      options:
+      - label: Data loss assessment — przeskanuj wszystkie logi na exfiltrację
+        description: 'Analitycy przeczesują logi sieciowe pod kątem eksfiltracji: co, ile i dokąd zostało wydobyte. Poprawna decyzja wymaga danych — a ich analiza trwa, a incydent żyje.'
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 10
+          reputacja: 5
+        stock_delta: -2.0
+      - label: Assume breach — traktuj wszystkie dane w ERP jako skompromitowane
+        description: 'Zakładasz najgorszy scenariusz (assume breach): wszystkie dane z ERP traktujesz jako skompromitowane i resetujesz sekrety. Drobiazgowe i kosztowne, ale eliminuje niewiadome.'
+        impacts:
+          plynnosc: -12
+          cyber: 18
+          regulacje: 8
+          reputacja: 3
+        stock_delta: -3.0
+      - label: Skup się na ochronie najcenniejszych aktywów — dane finansowe i HR
+        description: 'Priorytetujesz: najpierw dane finansowe i personalne (najwyższa kara i wrażliwość), reszta w drugiej kolejności. Pragmatyczne — ale wszystko narażone i tak trzeba zgłosić.'
+        impacts:
+          plynnosc: -5
+          cyber: 10
+          regulacje: 5
+          reputacja: 5
+        stock_delta: -1.0
+    ceo_question:
+      role: CEO
+      text: Dane finansowe i HR potencjalnie skompromitowane. Jak komunikujesz wewnętrznie?
+      options:
+      - label: Town hall meeting — pełna transparentność wobec pracowników
+        description: Town hall z pełną informacją o sytuacji i planie działań. Zaufanie pracowników w kryzysie — przy poziomie narażenia na przecieki wewnętrzne.
+        impacts:
+          plynnosc: -3
+          cyber: 0
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 1.0
+      - label: Informacja tylko dla zarządu i menedżerów — kontrolowany obieg
+        description: Informacja tylko dla kadry zarządzającej, kontrolowany obieg dokumentów. Mniej przecieków, więcej plotek — i to pracownicy jako ostatni dowiadują się o własnych danych.
+        impacts:
+          plynnosc: 0
+          cyber: 0
+          regulacje: -5
+          reputacja: -8
+        stock_delta: -2.0
+      - label: Powołaj dedykowany crisis team z udziałem pracowników każdego działu
+        description: Zespół kryzysowy z przedstawicielami każdego działu. Decyzje zapadają z wiedzą operacyjną ludzi z pierwszej linii.
+        impacts:
+          plynnosc: -5
+          cyber: 3
+          regulacje: 8
+          reputacja: 10
+        stock_delta: 0.0
+    learning_points:
+    - Analiza eksfiltracji — ustalanie, co naprawdę wyciekło
+    - Zasada assume breach w zarządzaniu incydentem
+    - Komunikacja wewnętrzna przy incydentach dotyczących danych pracowników
+  - id: S4R3
+    title: Kaskadowa Eskalacja
+    narrative: 'Okazuje się, że backdoor w ERP posłużył jako wektor do ataku na systemy Twoich własnych klientów — przez API integracyjne. Dwóch dużych klientów informuje, że ich dane też mogły wyciec.
+      Łańcuch dostaw skażenia rozrasta się.
+
+      '
+    broadcast: '🔺 ESKALACJA: Backdoor rozprzestrzenił się na systemy klientów przez API. Efekt domina w łańcuchu dostaw.'
+    ciso_question:
+      role: CISO
+      text: Skażenie przeszło na klientów przez Twoje API. Efekt domina. Jak zatrzymujesz kaskadę?
+      options:
+      - label: Natychmiast wyłącz wszystkie API — zatrzymaj krwotok
+        description: Wyłączasz wszystkie API integracyjne — kaskada się zatrzymuje, ale razem z usługami klientów. Bolesne uderzenie w przychody i zaufanie.
+        impacts:
+          plynnosc: -15
+          cyber: 15
+          regulacje: 8
+          reputacja: -5
+        stock_delta: -5.0
+      - label: Selektywna izolacja — wyłącz tylko skompromitowane endpointy
+        description: Chirurgicznie odłączasz tylko skompromitowane punkty końcowe. Utrzymujesz większość usług — ale pomyłka w identyfikacji pozostawia otwarty wektor ataku.
+        impacts:
+          plynnosc: -8
+          cyber: 12
+          regulacje: 5
+          reputacja: 5
+        stock_delta: -2.0
+      - label: Powiadom wszystkich klientów API i daj im narzędzia do self-assessment
+        description: Powiadamiasz wszystkich klientów API i udostępniasz im narzędzia do samodzielnej weryfikacji, czy są dotknięci. Transparentność przenosi współodpowiedzialność i buduje zaufanie.
+        impacts:
+          plynnosc: -5
+          cyber: 10
+          regulacje: 10
+          reputacja: 12
+        stock_delta: 0.0
+    ceo_question:
+      role: CEO
+      text: Twoi klienci zaatakowani przez Twoje API. Odpowiedzialność prawna i biznesowa?
+      options:
+      - label: Proaktywnie zaoferuj wsparcie forensic i kompensatę klientom
+        description: Proaktywnie finansujesz klientom analizę forenziczną i kompensaty. Zanim pójdą do prawników — pokaż, że stoisz murem za swoim błędem.
+        impacts:
+          plynnosc: -15
+          cyber: 5
+          regulacje: 8
+          reputacja: 15
+        stock_delta: -3.0
+      - label: Powołaj się na klauzulę force majeure w umowach
+        description: Powołujesz się na klauzulę siły wyższej (force majeure) w umowach. Prawnie może przejść — relacyjnie to spalenie mostów z kluczowymi klientami.
+        impacts:
+          plynnosc: 5
+          cyber: 0
+          regulacje: -10
+          reputacja: -15
+        stock_delta: -6.0
+      - label: Wspólne śledztwo z dotkniętymi klientami — joint incident response
+        description: Wspólne śledztwo z dotkniętymi klientami (joint incident response). Dzielisz się danymi i kosztami — sojusz zamiast pozwów.
+        impacts:
+          plynnosc: -8
+          cyber: 8
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 1.0
+    learning_points:
+    - Efekt domina ataków supply chain — odpowiedzialność wobec klientów
+    - 'Containment: pełne odcięcie vs. izolacja chirurgiczna'
+    - Klauzula force majeure — prawo vs. relacje biznesowe
+  - id: S4R4
+    title: Izolacja i Containment
+    narrative: 'Kaskadę udało się zatrzymać. Teraz trzeba posprzątać. Masz listę 47 systemów potencjalnie dotkniętych. Reputacja Twojej firmy jako zaufanego partnera technologicznego wisi na włosku.
+
+      '
+    broadcast: '🛑 CONTAINMENT: Kaskada zatrzymana. 47 systemów do oczyszczenia. Reputacja partnera technologicznego zagrożona.'
+    ciso_question:
+      role: CISO
+      text: 47 systemów do oczyszczenia. Jak priorytetujesz remediation?
+      options:
+      - label: Nuke and pave — reinstaluj wszystkie 47 systemów od zera
+        description: Czysta reinstalacja wszystkich 47 systemów od podstaw (tzw. nuke and pave). Zero ryzyka pozostałości ataku, maksimum kosztu i przestoju.
+        impacts:
+          plynnosc: -15
+          cyber: 18
+          regulacje: 10
+          reputacja: 8
+        stock_delta: -3.0
+      - label: Triage — podziel na krytyczne, ważne, standardowe. Kolejno oczyszczaj.
+        description: 'Triage: systemy krytyczne, ważne i standardowe — oczyszczane w tej kolejności. Świadomie zarządzasz przestojem, ale ryzyko utrzymuje się dłużej.'
+        impacts:
+          plynnosc: -8
+          cyber: 12
+          regulacje: 8
+          reputacja: 5
+        stock_delta: -1.0
+      - label: Automated remediation — deploy skryptów do masowego czyszczenia
+        description: Automatyczne skrypty czyszczą setki maszyn jednocześnie. Szybko i tanio — ale skrypt zna tylko te warianty złośliwego kodu, które Ty znasz.
+        impacts:
+          plynnosc: -3
+          cyber: 8
+          regulacje: 3
+          reputacja: 3
+        stock_delta: 0.0
+    ceo_question:
+      role: CEO
+      text: Reputacja zaufanego partnera zagrożona. Jak odbudowujesz pozycję rynkową?
+      options:
+      - label: Publiczny post-mortem — pełny raport z lekcjami wyniesionymi
+        description: Publikujesz publiczny raport post-mortem z wnioskami i lekcjami. Odważne i budujące zaufanie — standard branży technologicznej po dużych incydentach.
+        impacts:
+          plynnosc: -3
+          cyber: 5
+          regulacje: 8
+          reputacja: 15
+        stock_delta: 3.0
+      - label: Program certyfikacji bezpieczeństwa dla partnerów
+        description: Tworzysz program certyfikacji bezpieczeństwa dla partnerów. Podnosisz poprzeczkę całego ekosystemu, w którym działasz.
+        impacts:
+          plynnosc: -8
+          cyber: 10
+          regulacje: 10
+          reputacja: 10
+        stock_delta: 2.0
+      - label: Kampania marketingowa — 'Stronger Together'
+        description: Kampania wizerunkowa „Stronger Together”. PR bez konkretów technicznych może zostać odebrany jako wybieg.
+        impacts:
+          plynnosc: -5
+          cyber: 0
+          regulacje: 3
+          reputacja: 5
+        stock_delta: 0.0
+    learning_points:
+    - 'Strategie remediation: czysta reinstalacja, triage, automatyzacja'
+    - Kultura post-mortem i uczenia się z incydentów
+    - Reputacja partnera technologicznego po incydencie
+  - id: S4R5
+    title: Audyt Łańcucha Dostawców
+    narrative: 'Zarząd decyduje o kompleksowym audycie wszystkich dostawców oprogramowania i usług. Lista: 340 dostawców, 1200 komponentów. Niektórzy dostawcy odmawiają współpracy. Kontrakt wymaga renegocjacji.
+
+      '
+    broadcast: '🔍 AUDYT: 340 dostawców, 1200 komponentów do zbadania. Niektórzy odmawiają współpracy.'
+    ciso_question:
+      role: CISO
+      text: 340 dostawców do audytu. Niektórzy odmawiają. Twoja strategia audytowa?
+      options:
+      - label: SBOM (Software Bill of Materials) — wymuś od każdego dostawcy
+        description: Wymagasz od każdego dostawcy SBOM — pełnej listy komponentów oprogramowania. Standard narzucany m.in. w zamówieniach publicznych USA; część dostawców nie jest na to gotowa.
+        impacts:
+          plynnosc: -8
+          cyber: 15
+          regulacje: 12
+          reputacja: 4
+        stock_delta: 2.0
+      - label: Scoring ryzyka dostawców — automatyczny assessment z continuous monitoring
+        description: Automatyczny scoring ryzyka dostawców z ciągłym monitoringiem. Skalowalne — ale wynik algorytmu bywa błędny, a decyzje podejmujesz na jego podstawie.
+        impacts:
+          plynnosc: -10
+          cyber: 12
+          regulacje: 10
+          reputacja: 5
+        stock_delta: 1.0
+      - label: Konsolidacja — zmniejsz liczbę dostawców do minimum
+        description: 'Redukujesz liczbę dostawców do minimum — mniejsza powierzchnia ataku. Ale koncentracja ryzyka: upadek jednego dużego dostawcy zabolałby bardziej.'
+        impacts:
+          plynnosc: -5
+          cyber: 10
+          regulacje: 8
+          reputacja: 5
+        stock_delta: 0.0
+    ceo_question:
+      role: CEO
+      text: Niektórzy dostawcy odmawiają audytu. Jak negocjujesz i wymuszasz compliance?
+      options:
+      - label: Ultimatum — audyt albo koniec współpracy. Zero kompromisów.
+        description: 'Ultimatum: audyt albo koniec współpracy. Skuteczne wobec większości — ale kluczowi dostawcy mogą uznać Cię za klienta toksycznego.'
+        impacts:
+          plynnosc: -8
+          cyber: 10
+          regulacje: 15
+          reputacja: 10
+        stock_delta: 1.0
+      - label: System zachęt — bonusy za transparentność, gorsze warunki za odmowę
+        description: Bonusy kontraktowe za transparentność, gorsze warunki za odmowę. Ekonomia zamiast gróźb — ta sama presja, mniejszy opór.
+        impacts:
+          plynnosc: -5
+          cyber: 8
+          regulacje: 10
+          reputacja: 8
+        stock_delta: 2.0
+      - label: Współpraca — wspólny program rozwoju bezpieczeństwa z dostawcami
+        description: Wspólny program rozwoju bezpieczeństwa z dostawcami. Pomagasz słabszym, zamiast ich karać — buduje lojalność, kosztuje czas.
+        impacts:
+          plynnosc: -10
+          cyber: 12
+          regulacje: 8
+          reputacja: 12
+        stock_delta: 1.0
+    learning_points:
+    - SBOM (Software Bill of Materials) jako standard transparentności
+    - 'Zarządzanie ryzykiem dostawców (TPRM): marchewka vs. kij'
+    - Bilans dywersyfikacji vs. koncentracji dostawców
+  - id: S4R6
+    title: Nowa Architektura Bezpieczeństwa Supply Chain
+    narrative: 'Czas na fundamentalną zmianę. Zarząd oczekuje architektury odpornej na przyszłe ataki supply chain. Masz budżet, doświadczenie i mandat.
+
+      '
+    broadcast: '🔄 ARCHITEKTURA: Budowa nowej architektury bezpieczeństwa łańcucha dostaw. Fundament na przyszłość.'
+    ciso_question:
+      role: CISO
+      text: Budujesz nową architekturę supply chain security. Fundament na przyszłość.
+      options:
+      - label: Zero Trust Supply Chain — weryfikuj każdy komponent, każdą aktualizację
+        description: 'Weryfikujesz każdy komponent i każdą aktualizację przed wdrożeniem: piaskownica, podpisy, SBOM. Zero Trust dla łańcucha dostaw — najdroższa, ale najbezpieczniejsza architektura.'
+        impacts:
+          plynnosc: -12
+          cyber: 20
+          regulacje: 10
+          reputacja: 10
+        stock_delta: 5.0
+      - label: In-house development — zmniejsz zależność od zewnętrznego oprogramowania
+        description: Rozwijasz krytyczne oprogramowanie wewnętrznie. Pełna kontrola — ale koszt utrzymania zespołów i ryzyko własnych błędów idą w pakiecie.
+        impacts:
+          plynnosc: -18
+          cyber: 15
+          regulacje: 5
+          reputacja: 8
+        stock_delta: 2.0
+      - label: Open source first — transparentny kod, weryfikowalny przez społeczność
+        description: 'Preferujesz open source: kod otwarty do weryfikacji przez społeczność. Więcej oczu patrzących — ale „open” nie znaczy „audytowany”, a integrację i tak utrzymujesz Ty.'
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 3.0
+    ceo_question:
+      role: CEO
+      text: Transformacja supply chain security. Jak pozycjonujesz firmę strategicznie?
+      options:
+      - label: Lider branżowy — publikuj standardy, przewodź consortium
+        description: Publikujesz własne standardy bezpieczeństwa łańcucha dostaw i przewodzisz konsorcjum branżowemu. Lider nie tylko dostosowuje się do rynku — kształtuje go.
+        impacts:
+          plynnosc: -8
+          cyber: 10
+          regulacje: 7
+          reputacja: 18
+        stock_delta: 3.0
+      - label: Platforma — stwórz marketplace zweryfikowanych dostawców
+        description: Tworzysz marketplace zweryfikowanych, certyfikowanych dostawców. Budujesz infrastrukturę zaufania — i nowy strumień przychodów.
+        impacts:
+          plynnosc: -15
+          cyber: 12
+          regulacje: 8
+          reputacja: 12
+        stock_delta: 4.0
+      - label: Integracja pionowa — przejmij kluczowych dostawców
+        description: 'Integracja pionowa: przejmujesz kluczowych dostawców. Kontrola nad całością łańcucha za cenę ogromnego zobowiązania kapitałowego.'
+        impacts:
+          plynnosc: -20
+          cyber: 8
+          regulacje: 5
+          reputacja: 8
+        stock_delta: 1.0
+    learning_points:
+    - Zero Trust w łańcuchu dostaw oprogramowania
+    - 'Decyzje architektoniczne: make vs. buy vs. open source'
+    - Pozycjonowanie strategiczne firmy po incydencie
+- id: S5
+  title: Atak na Infrastrukturę Rządową
+  subtitle: Spear Phishing • e-Gov • Wyciek Danych • Wybory • Eskalacja • Cyber Resilience
+  description: 'Skoordynowany cyberatak państwowy na systemy rządowe RP: spear phishing na wiceministrów, kompromitacja systemów e-government dla 38 mln obywateli, wyciek danych z systemu P1, próba manipulacji
+    systemem wyborczym i eskalacja międzynarodowa. Gracze na najwyższym poziomie decyzyjnym poznają ustawę o KSC, rolę RCB, zastrzeganie PESEL, atrybucję państwową i mechanizmy odpowiedzi NATO.'
+  icon: 🏛️
+  initial_stock_price: 120.0
+  rounds:
+  - id: S5R1
+    title: Spear Phishing na Kluczowych Urzędników
+    narrative: 'Wysoce spersonalizowane e-maile phishingowe trafiają do 50 kluczowych urzędników ministerialnych. 12 z nich kliknęło w link. Ich komputery służbowe mogą być skompromitowane. Wśród ofiar:
+      3 wiceministrów i szef departamentu cyberbezpieczeństwa.
+
+      '
+    broadcast: '🎣 PHISHING: 12 z 50 kluczowych urzędników kliknęło w spear phishing. 3 wiceministrów wśród ofiar.'
+    ciso_question:
+      role: CISO
+      text: 12 urzędników ministerialnych skompromitowanych, w tym 3 wiceministrów. Reakcja?
+      options:
+      - label: Natychmiastowa izolacja wszystkich 12 stacji + credential rotation
+        description: Odcinasz wszystkie 12 stacji od sieci, rotujesz hasła, klucze i certyfikaty w całym resorcie. Pewne — ale wyłączenie 12 urzędników wysokiego szczebla paraliżuje bieżącą pracę ministerstwa.
+        impacts:
+          plynnosc: -8
+          cyber: 18
+          regulacje: 10
+          reputacja: 5
+        stock_delta: -3.0
+      - label: Cichy monitoring — obserwuj, co atakujący robią, zbieraj intelligence
+        description: Pozostawiasz komputery aktywne pod obserwacją, by zrozumieć intencje atakującego. Klasyczne wyzwanie odpowiedzi na incydent — ale stawką są konta wiceministrów i materiały państwowe.
+        impacts:
+          plynnosc: -3
+          cyber: 10
+          regulacje: -10
+          reputacja: -5
+        stock_delta: -1.0
+      - label: Deception — podsuń atakującemu fałszywe dokumenty
+        description: Podsuwasz atakującemu fałszywe dokumenty (honey documents), by śledzić jego ruch i oszacować intencje. Deception wymaga perfekcyjnej kontroli — pomyłka ujawni, że wiesz o ataku.
+        impacts:
+          plynnosc: -5
+          cyber: 15
+          regulacje: -3
+          reputacja: 3
+        stock_delta: -2.0
+    ceo_question:
+      role: CEO
+      text: 3 wiceministrów zhakowanych. Media nie wiedzą... jeszcze. Strategia polityczna?
+      options:
+      - label: Poinformuj Premiera — eskaluj na najwyższy szczebel
+        description: Natychmiast informujesz Premiera i Kancelarię Prezesa Rady Ministrów — oficjalna eskalacja. Decyzja przechodzi na wyższy szczebel, ale odpowiedzialność staje się dzielona.
+        impacts:
+          plynnosc: -2
+          cyber: 5
+          regulacje: 15
+          reputacja: 8
+        stock_delta: 0.0
+      - label: Cicho rozwiąż problem — VIP-y nie mogą być publicznie 'zhakowane'
+        description: Rozwiązujesz sprawę po cichu — wiceministrowie nie mogą figurować publicznie jako „zhakowani”. Dyskrecja chroni wizerunek, ale zatajenie incydentu narusza ustawę o krajowym systemie
+          cyberbezpieczeństwa.
+        impacts:
+          plynnosc: 0
+          cyber: -5
+          regulacje: -15
+          reputacja: 5
+        stock_delta: -3.0
+      - label: Obowiązkowe szkolenie security awareness dla wszystkich urzędników
+        description: Zamieniasz incydent w obowiązkowe szkolenia security awareness dla wszystkich urzędników. Kultura bezpieczeństwa zamiast szukania winnych.
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 8
+          reputacja: 10
+        stock_delta: 1.0
+    learning_points:
+    - Spear phishing jako preferowany wektor ataków państwowych
+    - Dylemat obserwacji vs. natychmiastowej neutralizacji
+    - Ustawa o krajowym systemie cyberbezpieczeństwa — obowiązki zgłaszania
+  - id: S5R2
+    title: Kompromitacja Systemów e-Government
+    narrative: 'Atakujący wykorzystali skradzione dane uwierzytelniające wiceministra do dostępu do systemów e-government. Profil Zaufany, e-PUAP, systemy podatkowe — wszystko potencjalnie skompromitowane.
+      38 milionów obywateli korzysta z tych systemów.
+
+      '
+    broadcast: '🏛️ e-GOV BREACH: Systemy Profil Zaufany, e-PUAP, podatkowe potencjalnie skompromitowane. 38M użytkowników.'
+    ciso_question:
+      role: CISO
+      text: Systemy e-gov dla 38M obywateli potencjalnie skompromitowane. Jak zabezpieczasz?
+      options:
+      - label: Wymuś reset Profilu Zaufanego dla wszystkich obywateli
+        description: Resetujesz Profil Zaufany wszystkim 38 mln obywateli. Maksymalne bezpieczeństwo — logistyczny chaos i powszechny gniew użytkowników.
+        impacts:
+          plynnosc: -15
+          cyber: 15
+          regulacje: 10
+          reputacja: -10
+        stock_delta: -5.0
+      - label: Selektywny reset — tylko konta, które miały aktywność w okresie incydentu
+        description: Reset tylko kont aktywnych w oknie czasowym incydentu — celowana interwencja. Mniej chaosu, ale jeśli założenie o oknie jest błędne, wektor ataku pozostaje otwarty.
+        impacts:
+          plynnosc: -8
+          cyber: 10
+          regulacje: 5
+          reputacja: 3
+        stock_delta: -2.0
+      - label: Wdróż dodatkową warstwę MFA dla systemów rządowych
+        description: Dodajesz warstwę uwierzytelniania wieloskładnikowego (MFA) do systemów rządowych. Najlepszy stosunek ochrony do niedogodności — standard, który powinien istnieć od dawna.
+        impacts:
+          plynnosc: -5
+          cyber: 18
+          regulacje: 9
+          reputacja: 2
+        stock_delta: -1.5
+    ceo_question:
+      role: CEO
+      text: 38 milionów obywateli potencjalnie zagrożonych. Jak komunikuje państwo?
+      options:
+      - label: Konferencja prasowa Premiera — pełna transparentność
+        description: Premier osobiście tłumaczy sytuację na konferencji prasowej. Najwyższa możliwa transparentność — i najwyższa stawka na każdy błąd.
+        impacts:
+          plynnosc: -3
+          cyber: 0
+          regulacje: 10
+          reputacja: 15
+        stock_delta: 2.0
+      - label: Alert RCB na telefony obywateli z instrukcjami bezpieczeństwa
+        description: Alert SMS RCB z instrukcjami bezpieczeństwa do niemal każdego obywatela. Sprawdzony, ogólnokrajowy system ostrzegania kryzysowego.
+        impacts:
+          plynnosc: -5
+          cyber: 5
+          regulacje: 8
+          reputacja: 10
+        stock_delta: 0.0
+      - label: Minimalizuj zasięg komunikacji — informuj tylko o potwierdzonych wyciekach
+        description: Komunikujesz tylko potwierdzone fakty, minimalizując zasięg. Kontrola paniki — ale ryzyko późniejszego zarzutu ukrywania informacji.
+        impacts:
+          plynnosc: 0
+          cyber: 0
+          regulacje: -10
+          reputacja: -12
+        stock_delta: -4.0
+    learning_points:
+    - Skala systemów e-gov (Profil Zaufany, e-PUAP) i ryzyko masowe
+    - MFA jako najlepszy stosunek ochrony do niedogodności
+    - Komunikacja państwa z obywatelami — system RCB
+  - id: S5R3
+    title: Wyciek Danych Obywateli
+    narrative: 'Potwierdzono: dane 5.2 miliona obywateli wyciekły. PESEL, adresy, dane podatkowe, historia zdrowotna z systemu P1. Dane pojawiają się na czarnym rynku. Poseł opozycji składa wniosek o wotum
+      nieufności.
+
+      '
+    broadcast: '🔓 MEGA-WYCIEK: 5.2 mln rekordów obywateli. PESEL, podatki, dane zdrowotne. Opozycja żąda wotum nieufności.'
+    ciso_question:
+      role: CISO
+      text: 5.2 miliona rekordów na dark webie. Dane zdrowotne, podatkowe, PESEL. Mitigation?
+      options:
+      - label: System masowego zastrzegania PESEL + monitoring tożsamości
+        description: Aktywujesz masowe zastrzeganie numerów PESEL i monitoring tożsamości. Obniża wartość kradzionych danych — bo utrudnia ich wykorzystanie.
+        impacts:
+          plynnosc: -10
+          cyber: 10
+          regulacje: 12
+          reputacja: 8
+        stock_delta: -2.0
+      - label: Cyber-police task force — ścigaj sprzedawców danych
+        description: Zespół zadaniowy z CBZC i Europolu do ścigania handlarzy danymi. Wycieku nie cofnie — ale sygnalizuje, że państwo ściga.
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 10
+          reputacja: 5
+        stock_delta: -1.0
+      - label: Data poisoning — wstrzyknij fałszywe rekordy, by zdezorientować kupujących
+        description: Wstrzykujesz fałszywe rekordy do wystawionych baz, by zdezorientować kupujących. Kontrowersyjne — podważa wiarygodność danych, ale też wiarygodność Twoich deklaracji.
+        impacts:
+          plynnosc: -3
+          cyber: 8
+          regulacje: -8
+          reputacja: 3
+        stock_delta: -1.0
+    ceo_question:
+      role: CEO
+      text: Wniosek o wotum nieufności. 5.2M obywateli zagrożonych. Przetrwanie polityczne?
+      options:
+      - label: Pełna odpowiedzialność — powołaj niezależną komisję śledczą
+        description: Powołujesz niezależną komisję śledczą z pełnymi uprawnieniami. Instytucjonalna odpowiedź na kryzys zaufania.
+        impacts:
+          plynnosc: -5
+          cyber: 5
+          regulacje: 15
+          reputacja: 15
+        stock_delta: 2.0
+      - label: Obwiniaj poprzednią administrację za niedoinwestowanie cyberbezpieczeństwa
+        description: Obwiniasz poprzedników za niedoinwestowanie cyberbezpieczeństwa. Krótkoterminowa tarcza polityczna, długoterminowo utrata wiarygodności.
+        impacts:
+          plynnosc: 0
+          cyber: -3
+          regulacje: -10
+          reputacja: -8
+        stock_delta: -4.0
+      - label: Fundusz Odszkodowawczy — 2000 PLN dla każdego poszkodowanego
+        description: 'Fundusz odszkodowawczy: 2000 PLN dla każdego poszkodowanego. Drogo — ale bezpośrednio i w sposób godny zaufania.'
+        impacts:
+          plynnosc: -20
+          cyber: 0
+          regulacje: 8
+          reputacja: 18
+        stock_delta: -3.0
+    learning_points:
+    - Zastrzeganie numeru PESEL — polska specyfika ochrony tożsamości
+    - Wyciek danych państwowych jako kryzys polityczny
+    - Cyberbezpieczeństwo a odpowiedzialność polityczna
+  - id: S5R4
+    title: Cyberatak na Infrastrukturę Wyborczą
+    narrative: '2 tygodnie przed wyborami parlamentarnymi. Wykryto próbę manipulacji systemem Krajowego Biura Wyborczego. Atakujący nie zmienili wyników (jeszcze), ale mieli dostęp do systemu. Zaufanie
+      do procesu demokratycznego jest zagrożone.
+
+      '
+    broadcast: '🗳️ WYBORY W ZAGROŻENIU: Próba infiltracji systemu KBW. 2 tygodnie do głosowania. Demokracja pod presją.'
+    ciso_question:
+      role: CISO
+      text: System wyborczy infiltrowany. 2 tygodnie do wyborów. Jak zabezpieczasz proces?
+      options:
+      - label: Air-gap systemu wyborczego + manualna weryfikacja każdego wyniku
+        description: Fizycznie odłączasz system wyborczy od sieci (air-gap) i wprowadzasz ręczną, równoległą weryfikację wyników. Maksymalne bezpieczeństwo przy ogromnym obciążeniu PKW.
+        impacts:
+          plynnosc: -12
+          cyber: 18
+          regulacje: 15
+          reputacja: 10
+        stock_delta: -2.0
+      - label: Blockchain-based audit trail — niepodważalny zapis każdego głosu
+        description: Każda operacja w systemie dostaje niepodważalny, kryptograficzny ślad audytowy. Wzorcowy poziom rozliczalności — ale nowa technologia 2 tygodnie przed wyborami to ryzyko samo w sobie.
+        impacts:
+          plynnosc: -15
+          cyber: 15
+          regulacje: 8
+          reputacja: 12
+        stock_delta: 0.0
+      - label: Powrót do 100% głosowania papierowego — eliminacja ryzyka cyfrowego
+        description: Całkowity powrót do głosowania papierowego. Eliminujesz ryzyko cyfrowe, ale spowalniasz liczenie i oddajesz pole do spekulacji o „odzyskiwaniu” wyników.
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 10
+          reputacja: 5
+        stock_delta: -1.0
+    ceo_question:
+      role: CEO
+      text: Zaufanie do demokracji zagrożone. 2 tygodnie do wyborów. Jak chronisz proces?
+      options:
+      - label: Międzynarodowi obserwatorzy + transparentność każdego kroku
+        description: Zapraszasz obserwatorów międzynarodowych (OBWE, ONZ) i publikujesz każdy krok procedur. Międzynarodowa legitymizacja procesu wyborczego.
+        impacts:
+          plynnosc: -5
+          cyber: 3
+          regulacje: 12
+          reputacja: 18
+        stock_delta: 3.0
+      - label: 'Kampania #MójGłosSięLiczy — edukacja obywatelska o bezpieczeństwie wyborów'
+        description: Masowa kampania edukacyjna o zabezpieczeniach wyborów. Obywatele rozumiejący proces są znacznie trudniejsi do zmanipulowania.
+        impacts:
+          plynnosc: -8
+          cyber: 0
+          regulacje: 5
+          reputacja: 12
+        stock_delta: 1.0
+      - label: Przełóż wybory do czasu pełnego zabezpieczenia systemu
+        description: 'Odwołujesz wybory do czasu zabezpieczenia systemów. Konstytucyjnie wątpliwe — i dokładnie to, czego chcą atakujący: podważenie wiary w demokrację.'
+        impacts:
+          plynnosc: -3
+          cyber: 8
+          regulacje: -15
+          reputacja: -10
+        stock_delta: -6.0
+    learning_points:
+    - Bezpieczeństwo procesów wyborczych — zaufanie jako fundament demokracji
+    - Air-gap i rozliczalność vs. nowoczesne technologie
+    - Dlaczego odroczenie wyborów jest wygraną atakującego
+  - id: S5R5
+    title: Eskalacja Międzynarodowa
+    narrative: 'Intelligence wskazuje jednoznacznie: atak to operacja obcego państwa. NATO i UE rozważają reakcję. Polska stoi przed decyzją: jak daleko eskalować na arenie międzynarodowej?
+
+      '
+    broadcast: '🌍 GEOPOLITYKA: Potwierdzony atak państwowy. NATO i UE rozważają reakcję. Polska decyduje o eskalacji.'
+    ciso_question:
+      role: CISO
+      text: Potwierdzony atak państwowy. Jak dzielisz się intelligence z sojusznikami?
+      options:
+      - label: Full disclosure do NATO Cooperative Cyber Defence Centre
+        description: 'Pełna wymiana danych z NATO CCDCOE w Tallinnie: wskaźniki, taktyki, wnioski. Wspólna obrona wymaga wspólnej wiedzy.'
+        impacts:
+          plynnosc: -3
+          cyber: 15
+          regulacje: 12
+          reputacja: 12
+        stock_delta: 2.0
+      - label: Wymiana dwustronna — tylko z najbliższymi sojusznikami
+        description: Selektywna wymiana tylko z najbliższymi sojusznikami. Mniejsze ryzyko wycieku danych wywiadowczych — ale i mniejsza koalicja.
+        impacts:
+          plynnosc: -2
+          cyber: 10
+          regulacje: 8
+          reputacja: 5
+        stock_delta: 0.0
+      - label: Public attribution report — ujawnij publicznie z technicznymi dowodami
+        description: Publiczny raport atrybucji z dowodami technicznymi. Transparentność i presja międzynarodowa — ale ujawniasz własne metody.
+        impacts:
+          plynnosc: 0
+          cyber: 12
+          regulacje: 5
+          reputacja: 15
+        stock_delta: 3.0
+    ceo_question:
+      role: CEO
+      text: Atak państwowy na Polskę. NATO rozważa reakcję. Twoja rekomendacja dla Rady Bezpieczeństwa?
+      options:
+      - label: Aktywacja artykułu 5 NATO w domenie cyber
+        description: Rekomendujesz aktywację artykułu 5 NATO w domenie cyber. Historyczny krok — sojusz uznał to za możliwe od szczytu w Walii w 2014 r.
+        impacts:
+          plynnosc: -5
+          cyber: 10
+          regulacje: 10
+          reputacja: 15
+        stock_delta: 2.0
+      - label: Proporcjonalny kontratak cybernetyczny — odpowiedź równoważnym ciosem
+        description: Rekomendujesz proporcjonalny kontratak cybernetyczny. Odwet może zaspokoić opinię publiczną — ale eskalacja wykracza poza Twoją kontrolę, a granice prawne są niepewne.
+        impacts:
+          plynnosc: -3
+          cyber: 15
+          regulacje: -12
+          reputacja: 8
+        stock_delta: -2.0
+      - label: Dyplomacja + sankcje — presja ekonomiczna zamiast cyber-odwetu
+        description: 'Dyplomacja: sankcje, wydalenie dyplomatów, rezolucje ONZ. Klasyczne narzędzia — przewidywalne i kontrolowalne eskalacyjnie.'
+        impacts:
+          plynnosc: -2
+          cyber: 5
+          regulacje: 15
+          reputacja: 12
+        stock_delta: 1.0
+    learning_points:
+    - Atrybucja państwowa i odpowiedź sojuszu (NATO, artykuły 4 i 5)
+    - 'Dylematy cyberodwetu: prawo międzynarodowe i ryzyko eskalacji'
+    - Dyplomacja i sankcje jako alternatywa dla odwetu
+  - id: S5R6
+    title: Cyber Resilience Narodowa
+    narrative: 'Kryzys minął. Polska wychodzi wzmocniona, ale potrzebuje systemowej przebudowy cyberbezpieczeństwa na poziomie państwowym. Masz historyczny moment i mandat polityczny.
+
+      '
+    broadcast: '🔄 RESILIENCE NARODOWA: Historyczny moment na przebudowę cyberbezpieczeństwa państwa. Mandat polityczny.'
+    ciso_question:
+      role: CISO
+      text: Budujesz narodową architekturę cyber resilience. Fundament na dekady.
+      options:
+      - label: Cyber National Guard — cyfrowa gwardia narodowa z ekspertami IT
+        description: 'Cyfrowa gwardia narodowa: rezerwiści-eksperci IT powoływani w kryzysie, na wzór wojsk obrony terytorialnej. Masa kompetencji za ułamek kosztu stałych zespołów.'
+        impacts:
+          plynnosc: -10
+          cyber: 20
+          regulacje: 10
+          reputacja: 15
+        stock_delta: 5.0
+      - label: Sovereign Cloud — krajowa chmura dla wszystkich systemów rządowych
+        description: Suwerenna chmura państwowa dla wszystkich systemów rządowych. Niezależność od dostawców zagranicznych — kosztem miliardów i lat wdrożenia.
+        impacts:
+          plynnosc: -18
+          cyber: 15
+          regulacje: 12
+          reputacja: 10
+        stock_delta: 3.0
+      - label: Cyber Academy — masowy program edukacji cyberbezpieczeństwa
+        description: 'Narodowa akademia cyberbezpieczeństwa: od szkół podstawowych po studia. Fundament kompetencji budowany na pokolenia.'
+        impacts:
+          plynnosc: -8
+          cyber: 12
+          regulacje: 8
+          reputacja: 18
+        stock_delta: 4.0
+    ceo_question:
+      role: CEO
+      text: Polska po cyberataku państwowym. Jak pozycjonujesz kraj na arenie międzynarodowej?
+      options:
+      - label: Centrum Cyberbezpieczeństwa NATO w Warszawie
+        description: Lobbing za ulokowaniem centrum cyberbezpieczeństwa NATO w Warszawie. Prestiż, inwestycje i wpływ na kształt sojuszniczej obrony.
+        impacts:
+          plynnosc: -10
+          cyber: 15
+          regulacje: 10
+          reputacja: 20
+        stock_delta: 6.0
+      - label: EU Cyber Shield — polska inicjatywa europejskiej tarczy cybernetycznej
+        description: Europejska tarcza cybernetyczna jako polska inicjatywa UE. Przywództwo w Europie i budżet z Brukseli.
+        impacts:
+          plynnosc: -5
+          cyber: 12
+          regulacje: 15
+          reputacja: 15
+        stock_delta: 5.0
+      - label: Cyber Tech Valley — specjalna strefa ekonomiczna dla firm cybersecurity
+        description: Specjalna strefa ekonomiczna dla firm cybersecurity. Polski odpowiednik doliny krzemowej — talenty i ulgi podatkowe zwabiają kapitał.
+        impacts:
+          plynnosc: -12
+          cyber: 10
+          regulacje: 8
+          reputacja: 18
+        stock_delta: 7.0
+    learning_points:
+    - Cyber resilience państwa — budowanie zdolności systemowych
+    - 'Suwerenność cyfrowa: chmura krajowa vs. dostawcy globalni'
+    - Edukacja jako fundament bezpieczeństwa narodowego
